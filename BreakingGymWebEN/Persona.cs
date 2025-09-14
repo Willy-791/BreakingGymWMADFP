@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BreakingGymWebEN
 {
-    public abstract class Persona
+    public abstract class Persona 
     {
         public int Id { get; set; }
         public int IdRol { get; set; }
