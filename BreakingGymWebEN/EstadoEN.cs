@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BreakingGymWebEN
 {
-    internal class EstadoEN
+    public class EstadoEN
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
