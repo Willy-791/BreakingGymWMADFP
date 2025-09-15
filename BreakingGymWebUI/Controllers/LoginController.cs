@@ -15,31 +15,25 @@ namespace BreakingGymWebUI.Controllers
 
         // POST: Login
         [HttpPost]
-        public IActionResult Login(string cuenta, string password)
+        public IActionResult Login(string cuenta, string contrasenia)
         {
-            if (string.IsNullOrEmpty(cuenta) || string.IsNullOrEmpty(password))
-            {
-                ViewBag.Error = "Debe ingresar usuario y contraseña";
-                return View();
-            }
-
-            // 🔹 Lógica de autenticación 
-            UsuarioEN usuario = UsuarioBL.IniciarSesion(cuenta, password);
+            // 🔹 Usar el método de tu BL
+            UsuarioEN usuario = UsuarioBL.IniciarSesion(cuenta, contrasenia);
 
             if (usuario != null)
             {
-                // ✅ Guardar datos en sesión
+                // Guardar sesión
                 HttpContext.Session.SetString("Cuenta", usuario.Cuenta);
                 HttpContext.Session.SetInt32("IdRol", usuario.IdRol);
 
-                // 🔹 Redirigir según el rol
+                // Redirigir según Rol
                 if (usuario.IdRol == 1) // Administrador
                 {
-                    return RedirectToAction("Index", "Administrador");
+                    return RedirectToAction("Index", "Home");
                 }
                 else if (usuario.IdRol == 2) // Cliente
                 {
-                    return RedirectToAction("Index", "Cliente");
+                    return RedirectToAction("Privacy", "Home");
                 }
                 else
                 {
@@ -49,7 +43,7 @@ namespace BreakingGymWebUI.Controllers
             }
             else
             {
-                ViewBag.Error = "Usuario o contraseña incorrectos";
+                ViewBag.Error = "Cuenta o contraseña incorrectos.";
                 return View();
             }
         }

@@ -4,24 +4,26 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BreakingGymWebEN;
+using BreakingGymWebDAL;
 
 namespace BreakingGymWebBL
 {
-    internal class RolBL
+    public class RolBL
     {
-        public List<RolEN> MostrarRol()
+        public static List<RolEN> MostrarRol()
         {
             return RolDAL.MostrarRol();
         }
-        public int GuardarRol(RolEN prolEN)
+        public static int GuardarRol(RolEN prolEN)
         {
             return RolDAL.AgregarRol(prolEN);
         }
-        public int EliminarRol(RolEN prolEN)
+        public static int EliminarRol(RolEN prolEN)
         {
             return RolDAL.EliminarRol(prolEN);
         }
-        public int ModificarRol(RolEN prolEN)
+        public static int ModificarRol(RolEN prolEN)
         {
             return RolDAL.ModificarRol(prolEN);
         }

@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BreakingGymDAL
+namespace BreakingGymWebDAL
 {
     public class MembresiaDAL
     {

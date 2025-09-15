@@ -9,11 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BreakingGymDAL
+namespace BreakingGymWebDAL
 {
     public class EstadoDAL
     {
-        public List<EstadoEN> MostrarEstado()
+        public static List<EstadoEN> MostrarEstado()
         {
             List<EstadoEN> _Lista = new List<EstadoEN>();
             using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
@@ -36,7 +36,7 @@ namespace BreakingGymDAL
             return _Lista;
         }
 
-        public int AgregarEstado(EstadoEN pestadoEN)
+        public static int AgregarEstado(EstadoEN pestadoEN)
         {
             using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
             {
@@ -50,7 +50,7 @@ namespace BreakingGymDAL
             }
         }
 
-        public int EliminarEstado(EstadoEN pestadoEN)
+        public static int EliminarEstado(EstadoEN pestadoEN)
         {
             using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
             {
@@ -64,7 +64,7 @@ namespace BreakingGymDAL
             }
         }
 
-        public int ModificarEstado(EstadoEN pestadoEN)
+        public static int ModificarEstado(EstadoEN pestadoEN)
         {
             using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
             {

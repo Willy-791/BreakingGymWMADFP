@@ -9,7 +9,7 @@ using System.Text;
 using Microsoft.Data.SqlClient;
 using System.Threading.Tasks;
 
-namespace BreakingGymDAL
+namespace BreakingGymWebDAL
 {
     public class TipoDocumentoDAL
     {

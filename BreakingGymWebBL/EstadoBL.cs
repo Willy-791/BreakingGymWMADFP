@@ -4,25 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BreakingGymWebEN;
+using BreakingGymWebDAL;
+
+namespace BreakingGymWebBL
 {
-    internal class EstadoBL
+    public class EstadoBL
     {
-        EstadoDAL estadoDAL = new EstadoDAL();
-        public List<EstadoEN> MostrarEstado()
+
+        public static List<EstadoEN> MostrarEstado()
         {
-            return estadoDAL.MostrarEstado();
+            return EstadoDAL.MostrarEstado();
         }
-        public int GuardarEstado(EstadoEN pestadoEN)
+        public static int GuardarEstado(EstadoEN pestadoEN)
         {
-            return estadoDAL.AgregarEstado(pestadoEN);
+            return EstadoDAL.AgregarEstado(pestadoEN);
         }
-        public int EliminarEstado(EstadoEN pestadoEN)
+        public static int EliminarEstado(EstadoEN pestadoEN)
         {
-            return estadoDAL.EliminarEstado(pestadoEN);
+            return EstadoDAL.EliminarEstado(pestadoEN);
         }
-        public int ModificarEstado(EstadoEN pestadoEN)
+        public static int ModificarEstado(EstadoEN pestadoEN)
         {
-            return estadoDAL.ModificarEstado(pestadoEN);
+            return EstadoDAL.ModificarEstado(pestadoEN);
         }
     }
 }
