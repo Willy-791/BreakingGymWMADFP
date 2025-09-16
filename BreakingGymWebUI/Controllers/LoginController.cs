@@ -13,32 +13,30 @@ namespace BreakingGymWebUI.Controllers
             return View();
         }
 
-        // POST: Login
         [HttpPost]
         public IActionResult Login(string cuenta, string contrasenia)
         {
-            // 🔹 Usar el método de tu BL
             UsuarioEN usuario = UsuarioBL.IniciarSesion(cuenta, contrasenia);
 
             if (usuario != null)
             {
-                // Guardar sesión
+                // Guardar datos necesarios en la sesión
                 HttpContext.Session.SetString("Cuenta", usuario.Cuenta);
                 HttpContext.Session.SetInt32("IdRol", usuario.IdRol);
+                HttpContext.Session.SetInt32("IdUsuario", usuario.Id); // 🔹 Necesario
 
-                // Redirigir según Rol
-                if (usuario.IdRol == 1) // Administrador
+                // Redirigir por rol
+                switch (usuario.IdRol)
                 {
-                    return RedirectToAction("Index", "InicioAdministrador");
-                }
-                else if (usuario.IdRol == 2) // Cliente
-                {
-                    return RedirectToAction("Index", "InicioUsuario");
-                }
-                else
-                {
-                    ViewBag.Error = "Rol no reconocido.";
-                    return View();
+                    case 1: // Admin
+                        return RedirectToAction("Index", "InicioAdministrador");
+
+                    case 2: // Cliente
+                        return RedirectToAction("Index", "InicioUsuario");
+
+                    default:
+                        ViewBag.Error = "Rol no reconocido.";
+                        return View();
                 }
             }
             else
@@ -49,11 +47,11 @@ namespace BreakingGymWebUI.Controllers
             }
         }
 
-        // GET: Logout
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
     }
+
 }

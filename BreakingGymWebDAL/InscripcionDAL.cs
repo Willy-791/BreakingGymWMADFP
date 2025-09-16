@@ -26,7 +26,7 @@ namespace BreakingGymWebDAL
                     _Lista.Add(new InscripcionEN
                     {
                         Id = _reader.GetInt32(0),
-                        IdCliente = _reader.GetInt32(1),
+                        IdUsuario = _reader.GetInt32(1),
                         IdMembresia = _reader.GetInt32(2),
                         IdEstado = _reader.GetInt32(3),
                         FechaInscripcion = _reader.GetDateTime(4),
@@ -52,7 +52,7 @@ namespace BreakingGymWebDAL
                     _Lista.Add(new InscripcionEN
                     {
                         Id = _reader.GetInt32(0),
-                        IdCliente = _reader.GetInt32(1),
+                        IdUsuario = _reader.GetInt32(1),
                         IdMembresia = _reader.GetInt32(2),
                         IdEstado = _reader.GetInt32(3),
                         FechaInscripcion = _reader.GetDateTime(4),
@@ -70,7 +70,7 @@ namespace BreakingGymWebDAL
                 _conn.Open();
                 SqlCommand _comando = new SqlCommand("GuardarInscripcion", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("@IdCliente", pinscripcionEN.IdCliente));
+                _comando.Parameters.Add(new SqlParameter("@IdUsuario", pinscripcionEN.IdUsuario));
                 _comando.Parameters.Add(new SqlParameter("@IdMembresia", pinscripcionEN.IdMembresia));
                 _comando.Parameters.Add(new SqlParameter("@IdEstado", pinscripcionEN.IdEstado));
                 _comando.Parameters.Add(new SqlParameter("@FechaInscripcion", pinscripcionEN.FechaInscripcion));
@@ -103,7 +103,7 @@ namespace BreakingGymWebDAL
                 SqlCommand _comando = new SqlCommand("ModificarInscripcion", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
                 _comando.Parameters.Add(new SqlParameter("@Id", pinscripcionEN.Id));
-                _comando.Parameters.Add(new SqlParameter("@IdCliente", pinscripcionEN.IdCliente));
+                _comando.Parameters.Add(new SqlParameter("@IdUsuario", pinscripcionEN.IdUsuario));
                 _comando.Parameters.Add(new SqlParameter("@IdMembresia", pinscripcionEN.IdMembresia));
                 _comando.Parameters.Add(new SqlParameter("@IdEstado", pinscripcionEN.IdEstado));
                 _comando.Parameters.Add(new SqlParameter("@FechaInscripcion", pinscripcionEN.FechaInscripcion));

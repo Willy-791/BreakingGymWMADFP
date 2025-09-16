@@ -9,7 +9,7 @@ namespace BreakingGymWebEN
     public class InscripcionEN
     {
         public int Id { get; set; }
-        public int IdCliente { get; set; }
+        public int IdUsuario { get; set; }
         public int IdMembresia { get; set; }
         public int IdEstado { get; set; }
         public DateTime FechaInscripcion { get; set; }
