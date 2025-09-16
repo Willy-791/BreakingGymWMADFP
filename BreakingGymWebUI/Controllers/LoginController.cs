@@ -43,6 +43,7 @@ namespace BreakingGymWebUI.Controllers
             }
             else
             {
+                ModelState.Clear();
                 ViewBag.Error = "Cuenta o contraseña incorrectos.";
                 return View();
             }
