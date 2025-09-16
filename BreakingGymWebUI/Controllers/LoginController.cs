@@ -29,7 +29,7 @@ namespace BreakingGymWebUI.Controllers
                 // Redirigir según Rol
                 if (usuario.IdRol == 1) // Administrador
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "InicioAdministrador");
                 }
                 else if (usuario.IdRol == 2) // Cliente
                 {
