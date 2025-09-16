@@ -114,7 +114,7 @@ namespace BreakingGymWebDAL
             }
 
         }
-        public static int EliminarUsuario(UsuarioEN pusuarioEN)
+        public static int EliminarUsuario(int Id)
         {
             using (IDbConnection _conn =
                 ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
@@ -123,7 +123,7 @@ namespace BreakingGymWebDAL
                 SqlCommand _comando =
                 new SqlCommand("EliminarUsuario", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("@Id", pusuarioEN.Id));
+                _comando.Parameters.Add(new SqlParameter("@Id",Id));
                 int resultado = _comando.ExecuteNonQuery();
                 _conn.Close();
                 return resultado;

@@ -14,7 +14,7 @@ namespace BreakingGymWebBL
         {
             return UsuarioDAL.ValidarUsuario(cuenta, contrasenia);
         }
-        public List<UsuarioEN> MostrarUsuario()
+        public static List<UsuarioEN> MostrarUsuario()
         {
             return UsuarioDAL.MostrarUsuario();
         }
@@ -22,15 +22,15 @@ namespace BreakingGymWebBL
         {
             return UsuarioDAL.BuscarUsuario(nombre);
         }
-        public int GuardarUsuario(UsuarioEN pusuarioEN)
+        public static int GuardarUsuario(UsuarioEN pusuarioEN)
         {
             return UsuarioDAL.AgregarUsuario(pusuarioEN);
         }
-        public int EliminarUsuario(UsuarioEN pusuarioEN)
+        public static int EliminarUsuario(int Id)
         {
-            return UsuarioDAL.EliminarUsuario(pusuarioEN);
+            return UsuarioDAL.EliminarUsuario(Id);
         }
-        public int ModificarUsuario(UsuarioEN pusuarioEN)
+        public static int ModificarUsuario(UsuarioEN pusuarioEN)
         {
             return UsuarioDAL.ModificarUsuario(pusuarioEN);
         }
