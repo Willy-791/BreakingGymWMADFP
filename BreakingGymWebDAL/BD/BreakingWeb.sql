@@ -31,12 +31,14 @@ GO
 -- USUARIO
 CREATE TABLE Usuario (
     Id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    IdRol INT NOT NULL FOREIGN KEY REFERENCES Rol(Id) ON DELETE CASCADE DEFAULT 2,
+    IdRol INT NOT NULL DEFAULT 2,
     Nombre VARCHAR(50) NOT NULL,
     Apellido VARCHAR(50) NOT NULL,
     Celular VARCHAR(9) NOT NULL,
     Cuenta VARCHAR(50) NOT NULL,
-    Contrasenia VARCHAR(20) NOT NULL
+    Contrasenia VARCHAR(20) NOT NULL,
+  FOREIGN KEY (IdRol) REFERENCES Rol(Id) ON DELETE CASCADE 
+
 );
 GO
 
@@ -399,6 +401,7 @@ EXEC GuardarRol 'Cliente';
 
 EXEC GuardarUsuario 1,'William','Rosa','70294311','William791','791';
 EXEC GuardarUsuario 2,'William','Rosa','70294311','William503','791';
+EXEC GUardarUsuario @Nombre='William',@Apellido='Rosa',@Celular='27272727',@Cuenta='William@gmail.com',@Contrasenia='791'
 
 EXEC GuardarEstado 'Activo';
 EXEC GuardarEstado 'Inactivo';

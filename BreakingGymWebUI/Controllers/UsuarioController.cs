@@ -32,7 +32,7 @@ namespace BreakingGymWebUI.Controllers
             if (ModelState.IsValid)
             {
                 UsuarioBL.GuardarUsuario(pusuarioEN);
-                return RedirectToAction(nameof(MostrarUsuario));
+                TempData["MensajeExito"] = "¡Usuario registrado correctamente!";
             }
             return View("GuardarUsuario", pusuarioEN);
         }
