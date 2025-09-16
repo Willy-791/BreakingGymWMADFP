@@ -33,7 +33,7 @@ namespace BreakingGymWebUI.Controllers
                 }
                 else if (usuario.IdRol == 2) // Cliente
                 {
-                    return RedirectToAction("Privacy", "Home");
+                    return RedirectToAction("Index", "InicioUsuario");
                 }
                 else
                 {
