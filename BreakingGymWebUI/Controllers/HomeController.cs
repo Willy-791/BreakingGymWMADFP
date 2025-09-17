@@ -28,5 +28,9 @@ namespace BreakingGymWebUI.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult SobreNosotros()
+        {
+            return View();
+        }
     }
 }
