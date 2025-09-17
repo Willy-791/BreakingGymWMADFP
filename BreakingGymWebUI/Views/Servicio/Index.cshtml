@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BreakingGymWebEN.ServicioEN>
+
+@{
+    ViewData["Title"] = "Servicios Disponibles";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">@ViewData["Title"]</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var servicio in Model)
+                        {
+                            <tr>
+                                <td>@servicio.Id</td>
+                                <td>@servicio.Nombre</td>
+                                <td>@servicio.Descripcion</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center text-muted">
+                                No hay servicios disponibles.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
