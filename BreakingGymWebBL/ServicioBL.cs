@@ -10,19 +10,19 @@ namespace BreakinGymWebBL
 {
     public class ServicioBL
     {
-        public List<ServicioEN> MostrarServicio()
+        public static List<ServicioEN> MostrarServicio()
         {
             return ServicioDAL.MostrarServicio();
         }
-        public int GuardarServicio(ServicioEN pservicioEN)
+        public static int GuardarServicio(ServicioEN pservicioEN)
         {
             return ServicioDAL.AgregarServicio(pservicioEN);
         }
-        public int EliminarServicio(ServicioEN pservicioEN)
+        public static int EliminarServicio(int Id)
         {
-            return ServicioDAL.EliminarServicio(pservicioEN);
+            return ServicioDAL.EliminarServicio(Id);
         }
-        public int ModificarServicio(ServicioEN pservicioEN)
+        public static int ModificarServicio(ServicioEN pservicioEN)
         {
             return ServicioDAL.ModificarServicio(pservicioEN);
         }
