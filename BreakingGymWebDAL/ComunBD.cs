@@ -14,7 +14,7 @@ namespace BreakingGymWebDAL
         {
             SqlServer, Oracle, DB2
         }
-        public const string Sqlconn = @"Data Source=.\;Initial Catalog=BreakingGymWeb;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
+        public const string Sqlconn = @"Data Source=DAVID-24\SQLEXPRESS;Initial Catalog=BreakingGymWeb;Integrated Security=True;Trust Server Certificate=True;";
         public static IDbConnection ObtenerConexion(TipoBD pTipoBD)
         {
             IDbConnection _conn;
