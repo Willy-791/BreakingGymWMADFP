@@ -19,9 +19,9 @@ namespace BreakingGymWebBL
         {
             return EstadoDAL.AgregarEstado(pestadoEN);
         }
-        public static int EliminarEstado(EstadoEN pestadoEN)
+        public static int EliminarEstado(int Id)
         {
-            return EstadoDAL.EliminarEstado(pestadoEN);
+            return EstadoDAL.EliminarEstado(Id);
         }
         public static int ModificarEstado(EstadoEN pestadoEN)
         {

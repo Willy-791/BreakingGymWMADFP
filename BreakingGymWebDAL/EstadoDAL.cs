@@ -50,14 +50,14 @@ namespace BreakingGymWebDAL
             }
         }
 
-        public static int EliminarEstado(EstadoEN pestadoEN)
+        public static int EliminarEstado(int Id)
         {
             using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
             {
                 _conn.Open();
                 SqlCommand _comando = new SqlCommand("EliminarEstado", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("@Id", pestadoEN.Id));
+                _comando.Parameters.Add(new SqlParameter("@Id", Id));
                 int resultado = _comando.ExecuteNonQuery();
                 _conn.Close();
                 return resultado;
