@@ -1,0 +1,45 @@
+﻿@model BreakingGymWebEN.MembresiaEN
+@{
+    ViewData["Title"] = "GuardarMembresia";
+    Layout = "~/Views/Shared/Ladmin.cshtml";
+}
+
+<h1>GuardarMembresia</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Registrar Membresía</h3></div>
+                <div class="card-body">
+                    <form asp-action="GuardarMembresia" method="post" id="GuardarMembresiaForm">
+                        <div class="mb-3">
+                            <input asp-for="Nombre" class="form-control" id="Nombre" placeholder="Nombre de membresía" required />
+                        </div>
+                        <div class="mb-3">
+                            <input asp-for="IdServicio" class="form-control" id="IdServicio" placeholder="ID de Servicio" required />
+                        </div>
+                        <div class="mb-3">
+                            <input asp-for="Precio" class="form-control" id="Precio" placeholder="Precio de membresía" required />
+                        </div>
+                        <div class="mb-3">
+                            <input asp-for="Duracion" class="form-control" id="Duracion" placeholder="Duración de membresía" required />
+                        </div>
+                        <div class="mb-3">
+                            <input asp-for="Descripcion" class="form-control" id="Descripcion" placeholder="Descripción de la membresía" required />
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i>Guardar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

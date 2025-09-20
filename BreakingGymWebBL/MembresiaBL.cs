@@ -27,9 +27,9 @@ namespace BreakinGymWebBL
         {
             return MembresiaDAL.AgregarMembresia(pmembresiaEN);
         }
-        public int EliminarMembresia(MembresiaEN pmembresiaEN)
+        public int EliminarMembresia(int Id)
         {
-            return MembresiaDAL.EliminarMembresia(pmembresiaEN);
+            return MembresiaDAL.EliminarMembresia(Id);
         }
         public int ModificarMembresia(MembresiaEN pmembresiaEN)
         {

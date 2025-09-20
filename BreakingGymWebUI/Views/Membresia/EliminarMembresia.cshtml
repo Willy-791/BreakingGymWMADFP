@@ -1,0 +1,44 @@
+﻿@model BreakingGymWebEN.MembresiaEN
+
+@{
+    ViewData["Title"] = "EliminarMembresia";
+    Layout = "~/Views/Shared/Ladmin.cshtml";
+}
+
+<h1>EliminarMembresia</h1>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-danger text-white text-center">
+                    <h4><i class="bi bi-trash fill"></i>Eliminar Membresía</h4>
+                </div>
+                <div class="card-body p-4 text-center">
+                    <p class="fs-5">¿Está seguro que desea eliminar la siguiente membresía</p>
+
+                    <ul class="list-group mb-4">
+                        <li class="list-group-item"><strong>Id:</strong>@Model.Id</li>
+                        <li class="list-group-item"><strong>Nombre:</strong>@Model.Nombre</li>
+                        <li class="list-group-item"><strong>IdPrecio:</strong>@Model.IdServicio</li>
+                        <li class="list-group-item"><strong>Precio:</strong>@Model.Precio</li>
+                        <li class="list-group-item"><strong>Duracion:</strong>@Model.Duracion</li>
+                        <li class="list-group-item"><strong>Descripcion:</strong>@Model.Duracion</li>
+                    </ul>
+
+                    <form asp-action="EliminarMembresia" method="post" id="EliminarMembresiaForm">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash-fill"></i>Eliminar
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

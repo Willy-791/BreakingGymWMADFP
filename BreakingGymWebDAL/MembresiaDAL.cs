@@ -114,14 +114,14 @@ namespace BreakingGymWebDAL
             }
         }
 
-        public static int EliminarMembresia(MembresiaEN pmembresiaEN)
+        public static int EliminarMembresia(int Id)
         {
             using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
             {
                 _conn.Open();
                 SqlCommand _comando = new SqlCommand("EliminarMembresia", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("@Id", pmembresiaEN.Id));
+                _comando.Parameters.Add(new SqlParameter("@Id",Id));
                 int resultado = _comando.ExecuteNonQuery();
                 _conn.Close();
                 return resultado;
