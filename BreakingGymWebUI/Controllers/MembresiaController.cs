@@ -7,16 +7,29 @@ namespace BreakingGymWeb.Controllers
 {
     public class MembresiaController : Controller
     {
-        MembresiaBL MembresiaBL = new MembresiaBL();
+        
         public IActionResult Index()
         {
-            var lista = new MembresiaBL().MostrarMembresia();
-            return View(lista);
+
+            var membresiaBL = new MembresiaBL();
+            var lista = MembresiaBL.MostrarMembresia();
+
+            if (lista == null)
+                lista = new List<MembresiaEN>();
+
+
+            return View("Index", lista);
         }
         public IActionResult MostrarMembresia()
         {
-            var lista = new MembresiaBL().MostrarMembresia();
-            return View(lista);
+            var membresiaBL = new MembresiaBL();
+            var lista = MembresiaBL.MostrarMembresia();
+
+            if (lista == null)
+                lista = new List<MembresiaEN>();
+
+
+            return View("MostrarMembresia", lista);
         }
 
         public IActionResult Ver(int id)
@@ -43,7 +56,7 @@ namespace BreakingGymWeb.Controllers
             {
                 MembresiaBL.GuardarMembresia(pmembresiaEN);
                 TempData["Mensaje"] = " Membresía guardada correctamente";
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MostrarMembresia));
             }
             else
             {
@@ -68,7 +81,7 @@ namespace BreakingGymWeb.Controllers
             {
                 MembresiaBL.ModificarMembresia(pmembresiaEN);
                 TempData["Mensaje"] = " Membresía modificada correctamente";
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MostrarMembresia));
             }
             else
             {
@@ -86,13 +99,13 @@ namespace BreakingGymWeb.Controllers
         }
 
         //POST: Eliminar Membresia
-        [HttpPost, ActionName("EliminarEstado")]
+        [HttpPost, ActionName("EliminarMembresia")]
 
         public IActionResult EliminarMembresiaConfirmada(int Id)
         {
             MembresiaBL.EliminarMembresia(Id);
             TempData["Mensaje"] = "Membresía eliminada correctamente.";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(MostrarMembresia));
         }
     }
 }

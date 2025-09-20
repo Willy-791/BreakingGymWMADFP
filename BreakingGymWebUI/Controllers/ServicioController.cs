@@ -35,7 +35,7 @@ namespace BreakingGymWebUI.Controllers
             return View(servicioEN);
         }
         [HttpGet]
-        public IActionResult ModificarTarea(int id)
+        public IActionResult ModificarServicio(int id)
         {
             var servicio = ServicioBL.MostrarServicio().FirstOrDefault(s => s.Id == id);
             if (servicio == null) return NotFound();
@@ -45,7 +45,7 @@ namespace BreakingGymWebUI.Controllers
         // POST: Tarea/ModificarTarea/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ModificarTarea(ServicioEN servicoEN)
+        public IActionResult ModificarServicio(ServicioEN servicoEN)
         {
             if (ModelState.IsValid)
             {

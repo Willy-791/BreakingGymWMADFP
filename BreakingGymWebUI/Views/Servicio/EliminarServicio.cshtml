@@ -1,7 +1,6 @@
-﻿@model BreakingGymWebEN.MembresiaEN
-
+﻿@model BreakingGymWebEN.ServicioEN
 @{
-    ViewData["Title"] = "EliminarMembresia";
+    ViewData["Title"] = "EliminarServicio";
     Layout = "~/Views/Shared/Ladmin.cshtml";
 }
 
@@ -10,28 +9,24 @@
         <div class="col-md-6">
             <div class="card shadow-lg border-0 rounded-3">
                 <div class="card-header bg-danger text-white text-center">
-                    <h4><i class="bi bi-trash-fill"></i> Eliminar Membresia</h4>
+                    <h4><i class="bi bi-trash-fill"></i> Eliminar Rol</h4>
                 </div>
                 <div class="card-body p-4 text-center">
-                    <p class="fs-5">¿Está seguro que desea eliminar al siguiente Membresia?</p>
+                    <p class="fs-5">¿Está seguro que desea eliminar al siguiente Servicio?</p>
 
                     <ul class="list-group mb-4">
                         <li class="list-group-item"><strong>Id:</strong> @Model.Id</li>
                         <li class="list-group-item"><strong>Nombre:</strong> @Model.Nombre</li>
-						<li class="list-group-item"><strong>IdServicio:</strong> @Model.IdServicio</li>
-						<li class="list-group-item"><strong>Precio:</strong> @Model.Precio</li>
-						<li class="list-group-item"><strong>Duracion:</strong> @Model.Duracion</li>
-						<li class="list-group-item"><strong>Descripcion:</strong> @Model.Descripcion</li>
-
+                        <li class="list-group-item"><strong>Descripcion:</strong> @Model.Descripcion</li>
                     </ul>
 
-                    <form asp-action="EliminarMembresia" method="post" id="EliminarMembresiaForm">
+                    <form asp-action="EliminarServicio" method="post" id="EliminarServicioForm">
                         <input type="hidden" asp-for="Id" />
                         <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-danger">
                                 <i class="bi bi-trash-fill"></i> Eliminar
                             </button>
-                            <a asp-action="MostrarMembresia" class="btn btn-secondary">
+                            <a asp-action="Index" class="btn btn-secondary">
                                 <i class="bi bi-x-circle"></i> Cancelar
                             </a>
                         </div>
@@ -41,3 +36,4 @@
         </div>
     </div>
 </div>
+

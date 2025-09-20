@@ -15,7 +15,7 @@ namespace BreakinGymWebBL
             // Llama al método estático de la DAL directamente
             return MembresiaDAL.ObtenerMembresiaPorId(id);
         }
-        public List<MembresiaEN> MostrarMembresia()
+        public static List<MembresiaEN> MostrarMembresia()
         {
             return MembresiaDAL.MostrarMembresia();
         }
@@ -23,15 +23,15 @@ namespace BreakinGymWebBL
         {
             return MembresiaDAL.BuscarMembresia(nombre);
         }
-        public int GuardarMembresia(MembresiaEN pmembresiaEN)
+        public static int GuardarMembresia(MembresiaEN pmembresiaEN)
         {
             return MembresiaDAL.AgregarMembresia(pmembresiaEN);
         }
-        public int EliminarMembresia(int Id)
+        public static int EliminarMembresia(int Id)
         {
             return MembresiaDAL.EliminarMembresia(Id);
         }
-        public int ModificarMembresia(MembresiaEN pmembresiaEN)
+        public static int ModificarMembresia(MembresiaEN pmembresiaEN)
         {
             return MembresiaDAL.ModificarMembresia(pmembresiaEN);
         }

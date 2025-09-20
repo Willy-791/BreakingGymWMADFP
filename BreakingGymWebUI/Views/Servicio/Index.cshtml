@@ -1,21 +1,27 @@
-﻿@model IEnumerable<BreakingGymWebEN.ServicioEN>
-
+﻿@model List<BreakingGymWebEN.ServicioEN>
 @{
-    ViewData["Title"] = "Servicios Disponibles";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Ladmin.cshtml";
 }
 
 <div class="container mt-4">
     <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-            <h2 class="mb-0">@ViewData["Title"]</h2>
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0"><i class="bi bi-people-fill"></i> Lista de Servicios</h4>
+            <a asp-action="GuardarServicio" class="btn btn-light btn-sm">
+                <i class="bi bi-person-plus-fill"></i> Agregar Servicio
+            </a>
         </div>
         <div class="card-body">
             <table class="table table-hover table-bordered table-striped align-middle">
                 <thead class="table-dark">
+
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Descripción</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Acciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +32,15 @@
                             <tr>
                                 <td>@servicio.Id</td>
                                 <td>@servicio.Nombre</td>
-                                <td>@servicio.Descripcion</td>
+								<td>@servicio.Descripcion</td>
+                                <td class="text-center">
+                                    <a asp-action="ModificarServicio" asp-route-id="@servicio.Id" class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil-square"></i> Modificar
+                                    </a>
+                                    <a asp-action="EliminarServicio" asp-route-id="@servicio.Id" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash-fill"></i> Eliminar
+                                    </a>
+                                </td>
                             </tr>
                         }
                     }
@@ -34,12 +48,14 @@
                     {
                         <tr>
                             <td colspan="3" class="text-center text-muted">
-                                No hay servicios disponibles.
+                                No hay Servicios disponibles.
                             </td>
                         </tr>
                     }
                 </tbody>
+
             </table>
         </div>
     </div>
 </div>
+
