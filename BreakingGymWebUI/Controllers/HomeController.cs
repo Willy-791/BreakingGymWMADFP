@@ -32,5 +32,15 @@ namespace BreakingGymWebUI.Controllers
         {
             return View();
         }
+
+        public IActionResult SobreNosotrosU()
+        {
+            return View();
+        }
+
+        public IActionResult SobreNosotrosA()
+        {
+            return View();
+        }
     }
 }
