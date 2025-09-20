@@ -19,9 +19,9 @@ namespace BreakingGymWebBL
         {
             return RolDAL.AgregarRol(prolEN);
         }
-        public static int EliminarRol(RolEN prolEN)
+        public static int EliminarRol(int Id)
         {
-            return RolDAL.EliminarRol(prolEN);
+            return RolDAL.EliminarRol(Id);
         }
         public static int ModificarRol(RolEN prolEN)
         {
