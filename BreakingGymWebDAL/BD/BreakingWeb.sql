@@ -59,8 +59,8 @@ CREATE TABLE Inscripcion (
     IdUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuario(Id) ON DELETE CASCADE,
     IdMembresia INT NOT NULL FOREIGN KEY REFERENCES Membresia(Id) ON DELETE CASCADE,
     IdEstado INT NOT NULL FOREIGN KEY REFERENCES Estado(Id) ON DELETE CASCADE,
-    FechaInscripcion DATE NOT NULL,
-    FechaVencimiento DATE NOT NULL
+    FechaInscripcion DATE  NULL,
+    FechaVencimiento DATE  NULL
 );
 GO
 
@@ -383,16 +383,19 @@ BEGIN
     SELECT * FROM Inscripcion WHERE IdUsuario = @IdUsuario;
 END;
 GO
-
-CREATE PROCEDURE ValidarUsuario @Cuenta VARCHAR(50), @Contrasenia VARCHAR(50)
+CREATE PROCEDURE ValidarUsuario
+    @Cuenta VARCHAR(50),
+    @Contrasenia VARCHAR(50)
 AS
 BEGIN
     SET NOCOUNT ON;
-    SELECT IdRol
+    SELECT Id, IdRol, Cuenta, Contrasenia
     FROM Usuario
     WHERE Cuenta = @Cuenta AND Contrasenia = @Contrasenia;
 END;
 GO
+
+
 
 
 -- DATOS INICIALES ----------------------------------------

@@ -26,18 +26,23 @@ namespace BreakingGymWebDAL
 
                 if (reader.Read())
                 {
-                    usuario = new UsuarioEN
+                    if (reader.Read())
                     {
-                        Cuenta = cuenta,
-                        Contrasenia = contrasenia,
-                        IdRol = reader.GetInt32(0) // Asumiendo que solo devuelves IdRol
-                    };
+                        usuario = new UsuarioEN
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            IdRol = reader.GetInt32(reader.GetOrdinal("IdRol")),
+                            Cuenta = reader.GetString(reader.GetOrdinal("Cuenta")),
+                            Contrasenia = reader.GetString(reader.GetOrdinal("Contrasenia"))
+                        };
+                    }
                 }
 
                 _conn.Close();
                 return usuario;
             }
         }
+
 
         public static List<UsuarioEN> MostrarUsuario()
         {

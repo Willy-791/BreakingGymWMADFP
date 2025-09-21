@@ -12,7 +12,7 @@ namespace BreakingGymWebEN
         public int IdUsuario { get; set; }
         public int IdMembresia { get; set; }
         public int IdEstado { get; set; }
-        public DateTime FechaInscripcion { get; set; }
-        public DateTime FechaVencimiento { get; set; }
+        public DateTime? FechaInscripcion { get; set; }
+        public DateTime? FechaVencimiento { get; set; }
     }
 }

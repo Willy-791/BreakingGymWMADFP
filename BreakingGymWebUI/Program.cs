@@ -31,6 +31,6 @@ app.UseSession();
 // Rutas
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=InicioAdministrador}/{action=Index}/{id?}");
+    pattern: "{controller=InicioUsuario}/{action=Index}/{id?}");
 
 app.Run();

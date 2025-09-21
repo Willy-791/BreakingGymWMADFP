@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BreakingGymWebEN.MembresiaEN>
-
 @{
-    ViewData["Title"] = "Planes de Membresía";
+    ViewData["Title"] = "MostrarMembresiaU";
+    Layout = "~/Views/Shared/Lusuario.cshtml";
 }
 
 <div class="container my-5">
@@ -25,10 +25,11 @@
                                 <li>✔ @beneficio.Trim()</li>
                             }
                         </ul>
-                        <a href="@Url.Action("Login", "login", new { idMembresia = plan.Id })" class="btn btn-primary mt-auto">Elegir este plan</a>
+                        <a href="@Url.Action("GuardarInscripcion", "Membresia", new { idMembresia = plan.Id })" class="btn btn-primary mt-auto">Elegir este plan</a>
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+

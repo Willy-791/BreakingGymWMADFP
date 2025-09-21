@@ -73,8 +73,10 @@ namespace BreakingGymWebDAL
                 _comando.Parameters.Add(new SqlParameter("@IdUsuario", pinscripcionEN.IdUsuario));
                 _comando.Parameters.Add(new SqlParameter("@IdMembresia", pinscripcionEN.IdMembresia));
                 _comando.Parameters.Add(new SqlParameter("@IdEstado", pinscripcionEN.IdEstado));
-                _comando.Parameters.Add(new SqlParameter("@FechaInscripcion", pinscripcionEN.FechaInscripcion));
-                _comando.Parameters.Add(new SqlParameter("@FechaVencimiento", pinscripcionEN.FechaVencimiento));
+                _comando.Parameters.Add(new SqlParameter("@FechaInscripcion",
+                    (object?)pinscripcionEN.FechaInscripcion ?? DBNull.Value));
+                _comando.Parameters.Add(new SqlParameter("@FechaVencimiento",
+                    (object?)pinscripcionEN.FechaVencimiento ?? DBNull.Value));
                 int resultado = _comando.ExecuteNonQuery();
                 _conn.Close();
                 return resultado;
@@ -106,9 +108,10 @@ namespace BreakingGymWebDAL
                 _comando.Parameters.Add(new SqlParameter("@IdUsuario", pinscripcionEN.IdUsuario));
                 _comando.Parameters.Add(new SqlParameter("@IdMembresia", pinscripcionEN.IdMembresia));
                 _comando.Parameters.Add(new SqlParameter("@IdEstado", pinscripcionEN.IdEstado));
-                _comando.Parameters.Add(new SqlParameter("@FechaInscripcion", pinscripcionEN.FechaInscripcion));
-                _comando.Parameters.Add(new SqlParameter("@FechaVencimiento", pinscripcionEN.FechaVencimiento));
-
+                _comando.Parameters.Add(new SqlParameter("@FechaInscripcion",
+                    (object?)pinscripcionEN.FechaInscripcion ?? DBNull.Value));
+                _comando.Parameters.Add(new SqlParameter("@FechaVencimiento",
+                    (object?)pinscripcionEN.FechaVencimiento ?? DBNull.Value));
                 int resultado = _comando.ExecuteNonQuery();
                 _conn.Close();
                 return resultado;
