@@ -7,16 +7,13 @@ namespace BreakingGymWeb.Controllers
 {
     public class MembresiaController : Controller
     {
-        
+
         public IActionResult Index()
         {
-
-            var membresiaBL = new MembresiaBL();
             var lista = MembresiaBL.MostrarMembresia();
 
             if (lista == null)
                 lista = new List<MembresiaEN>();
-
 
             return View("Index", lista);
         }

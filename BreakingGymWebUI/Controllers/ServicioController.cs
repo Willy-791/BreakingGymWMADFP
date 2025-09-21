@@ -32,7 +32,7 @@ namespace BreakingGymWebUI.Controllers
                 lista = new List<ServicioEN>();
 
 
-            return View("Index", lista);
+            return View("MostrarSU", lista);
         }
         [HttpGet]
         public IActionResult GuardarServicio()

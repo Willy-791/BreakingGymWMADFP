@@ -10,7 +10,7 @@ namespace BreakinGymWebBL
 {
     public class InscripcionBL
     {
-        public List<InscripcionEN> MostrarInscripcion()
+        public static List<InscripcionEN> MostrarInscripcion()
         {
             return InscripcionDAL.MostrarInscripcion();
         }
@@ -18,15 +18,15 @@ namespace BreakinGymWebBL
         {
             return InscripcionDAL.BuscarInscripcion(idCliente);
         }
-        public int GuardarInscripcion(InscripcionEN pinscripcionEN)
+        public static int GuardarInscripcion(InscripcionEN pinscripcionEN)
         {
             return InscripcionDAL.AgregarInscripcion(pinscripcionEN);
         }
-        public int EliminarInscripcion(InscripcionEN pinscripcionEN)
+        public static int EliminarInscripcion(int Id)
         {
-            return InscripcionDAL.EliminarInscripcion(pinscripcionEN);
+            return InscripcionDAL.EliminarInscripcion(Id);
         }
-        public int ModificarInscripcion(InscripcionEN pinscripcionEN)
+        public static int ModificarInscripcion(InscripcionEN pinscripcionEN)
         {
             return InscripcionDAL.ModificarInscripcion(pinscripcionEN);
         }

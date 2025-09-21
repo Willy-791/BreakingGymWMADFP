@@ -20,10 +20,11 @@ namespace BreakingGymWebUI.Controllers
 
             if (usuario != null)
             {
-                // Guardar datos necesarios en la sesión
                 HttpContext.Session.SetString("Cuenta", usuario.Cuenta);
                 HttpContext.Session.SetInt32("IdRol", usuario.IdRol);
-                HttpContext.Session.SetInt32("IdUsuario", usuario.Id); // 🔹 Necesario
+                HttpContext.Session.SetInt32("IdUsuario", usuario.Id);
+
+                
 
                 // Redirigir por rol
                 switch (usuario.IdRol)
