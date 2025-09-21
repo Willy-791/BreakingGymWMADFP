@@ -14,13 +14,18 @@ namespace BreakingGymWebUI.Controllers
         // GET: Usuarios
         public IActionResult MostrarUsuario()
         {
-            var lista = UsuarioBL.MostrarUsuario(); // Asegúrate de tener un BL para Usuarios
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            var lista = UsuarioBL.MostrarUsuario(); 
             return View("MostrarUsuario", lista); // Vista: MostrarUsuarios.cshtml
         }
 
         // GET: Usuarios/GuardarUsuario
         public IActionResult GuardarUsuario()
         {
+            
             return View("GuardarUsuario"); // Vista: GuardarUsuario.cshtml
         }
 
@@ -40,6 +45,10 @@ namespace BreakingGymWebUI.Controllers
         // GET: Usuarios/ModificarUsuario/5
         public IActionResult ModificarUsuario(int id)
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var pusuarioEN = UsuarioBL.MostrarUsuario().FirstOrDefault(u => u.Id == id);
             if (pusuarioEN == null) return NotFound();
             return View("ModificarUsuario", pusuarioEN); // Vista: ModificarUsuario.cshtml
@@ -50,6 +59,7 @@ namespace BreakingGymWebUI.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ModificarUsuario(UsuarioEN pusuarioEN)
         {
+           
             if (ModelState.IsValid)
             {
                 UsuarioBL.ModificarUsuario(pusuarioEN);
@@ -61,6 +71,10 @@ namespace BreakingGymWebUI.Controllers
         // GET: Usuarios/EliminarUsuario/5
         public IActionResult EliminarUsuario(int id)
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var usuario = UsuarioBL.MostrarUsuario().FirstOrDefault(u => u.Id == id);
             if (usuario == null) return NotFound();
             return View("EliminarUsuario", usuario); // Vista: EliminarUsuario.cshtml

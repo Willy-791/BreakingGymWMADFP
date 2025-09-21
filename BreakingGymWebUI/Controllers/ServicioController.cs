@@ -9,6 +9,22 @@ namespace BreakingGymWebUI.Controllers
     {
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            
+            var servicioBL = new ServicioBL();
+            var lista = ServicioBL.MostrarServicio();
+
+            if (lista == null)
+                lista = new List<ServicioEN>();
+
+
+            return View("Index", lista);
+        }
+        public IActionResult MostrarSU() 
+        {
             var servicioBL = new ServicioBL();
             var lista = ServicioBL.MostrarServicio();
 
@@ -21,6 +37,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult GuardarServicio()
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
         [HttpPost]

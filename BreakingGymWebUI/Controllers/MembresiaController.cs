@@ -22,14 +22,19 @@ namespace BreakingGymWeb.Controllers
         }
         public IActionResult MostrarMembresia()
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else { 
             var membresiaBL = new MembresiaBL();
             var lista = MembresiaBL.MostrarMembresia();
 
             if (lista == null)
                 lista = new List<MembresiaEN>();
 
-
             return View("MostrarMembresia", lista);
+            }
         }
 
         public IActionResult Ver(int id)
@@ -45,6 +50,10 @@ namespace BreakingGymWeb.Controllers
         }
         public IActionResult GuardarMembresia()
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View("GuardarMembresia");
         }
         //POST: Guardar Membresia
@@ -67,9 +76,16 @@ namespace BreakingGymWeb.Controllers
         }
         public IActionResult ModificarMembresia(int id)
         {
-            var membresia = MembresiaBL.MostrarMembresia().FirstOrDefault(m => m.Id == id);
-            if (membresia == null) return NotFound();
-            return View("ModificarMembresia", membresia);
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var membresia = MembresiaBL.MostrarMembresia().FirstOrDefault(m => m.Id == id);
+                if (membresia == null) return NotFound();
+                return View("ModificarMembresia", membresia);
+            }
         }
 
         //POST: Modificar Membresia
@@ -93,9 +109,16 @@ namespace BreakingGymWeb.Controllers
         //GET
         public IActionResult EliminarMembresia(int id)
         {
-            var membresia = MembresiaBL.MostrarMembresia().FirstOrDefault(m => m.Id == id);
-            if (membresia == null) return NotFound();
-            return View("EliminarMembresia", membresia);
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var membresia = MembresiaBL.MostrarMembresia().FirstOrDefault(m => m.Id == id);
+                if (membresia == null) return NotFound();
+                return View("EliminarMembresia", membresia);
+            }
         }
 
         //POST: Eliminar Membresia

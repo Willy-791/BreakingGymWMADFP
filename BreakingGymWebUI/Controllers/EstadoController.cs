@@ -9,7 +9,13 @@ namespace BreakingGymWebUI.Controllers
     {
         public IActionResult Index()
         {
-            var estadoBL = new EstadoBL();
+            if (HttpContext.Session.GetInt32("IdUsuario") == null) 
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var estadoBL = new EstadoBL();
             var lista = EstadoBL.MostrarEstado();
 
             if (lista == null)
@@ -17,17 +23,26 @@ namespace BreakingGymWebUI.Controllers
 
 
             return View("Index", lista);
+            }
         }
       
         [HttpGet]
         public IActionResult GuardarEstado()
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
         [HttpPost]
         public IActionResult GuardarEstado(EstadoEN estadoEN)
         {
-            if(ModelState.IsValid) 
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (ModelState.IsValid) 
             { 
                 EstadoBL.GuardarEstado(estadoEN);
                 TempData["ExitoGuardar"] = "Servicio guardado correctamente.";
@@ -38,6 +53,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult ModificarEstado(int Id)
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var servicio = EstadoBL.MostrarEstado().FirstOrDefault(s => s.Id == Id);
             if (servicio == null) return NotFound();
             return View(servicio);
@@ -59,6 +78,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult EliminarEstado(int Id)
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var estado = EstadoBL.MostrarEstado().FirstOrDefault(E => E.Id == Id);
             if (estado == null) return NotFound();
             return View(estado); 

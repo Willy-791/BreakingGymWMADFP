@@ -35,11 +35,19 @@ namespace BreakingGymWebUI.Controllers
 
         public IActionResult SobreNosotrosU()
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
 
         public IActionResult SobreNosotrosA()
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
     }

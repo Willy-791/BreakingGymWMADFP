@@ -8,19 +8,28 @@ namespace BreakingGymWebUI.Controllers
     {
         public IActionResult Index()
         {
-            var rolBL = new RolBL();
-            var lista = RolBL.MostrarRol();
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var rolBL = new RolBL();
+                var lista = RolBL.MostrarRol();
+                if (lista == null)
+                    lista = new List<RolEN>();
 
-            if (lista == null)
-                lista = new List<RolEN>();
-
-
-            return View("Index", lista);
+                return View("Index", lista);
+            }
         }
 
         [HttpGet]
         public IActionResult GuardarRol()
         {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
         [HttpPost]
@@ -37,9 +46,16 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult ModificarRol(int Id)
         {
-            var rol = RolBL.MostrarRol().FirstOrDefault(r => r.Id == Id);
-            if (rol == null) return NotFound();
-            return View(rol);
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var rol = RolBL.MostrarRol().FirstOrDefault(r => r.Id == Id);
+                if (rol == null) return NotFound();
+                return View(rol);
+            }
         }
 
         // POST: Tarea/ModificarTarea/5
@@ -58,9 +74,16 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult EliminarRol(int Id)
         {
-            var rol = RolBL.MostrarRol().FirstOrDefault(r => r.Id == Id);
-            if (rol == null) return NotFound();
-            return View(rol);
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var rol = RolBL.MostrarRol().FirstOrDefault(r => r.Id == Id);
+                if (rol == null) return NotFound();
+                return View(rol);
+            }
         }
         [HttpPost, ActionName("EliminarRol")]
         public IActionResult EliminarRolConfirmado(int Id)
