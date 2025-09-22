@@ -24,8 +24,7 @@ namespace BreakingGymWebDAL
                 SqlDataReader reader = _comando.ExecuteReader();
                 UsuarioEN usuario = null;
 
-                if (reader.Read())
-                {
+               
                     if (reader.Read())
                     {
                         usuario = new UsuarioEN
@@ -36,7 +35,6 @@ namespace BreakingGymWebDAL
                             Contrasenia = reader.GetString(reader.GetOrdinal("Contrasenia"))
                         };
                     }
-                }
 
                 _conn.Close();
                 return usuario;

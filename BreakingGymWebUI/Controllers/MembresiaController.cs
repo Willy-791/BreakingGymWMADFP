@@ -160,18 +160,10 @@ namespace BreakingGymWeb.Controllers
             TempData["Mensaje"] = "Membresía eliminada correctamente.";
             return RedirectToAction(nameof(MostrarMembresia));
         }
-        [HttpGet]
-        public IActionResult MostrarInscripcion()
-        {
-            if (HttpContext.Session.GetInt32("IdUsuario") == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
-            return View("Index");
-        }
+      
 
         [HttpGet]
-        public IActionResult GuardarInscripcion(int idMembresia)
+        public IActionResult ConfirmarInscripcion(int idMembresia)
         {
             var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
 
@@ -181,32 +173,38 @@ namespace BreakingGymWeb.Controllers
                 return RedirectToAction("Login", "Login");
             }
 
-            InscripcionEN inscripcionEN = new InscripcionEN
+            var membresia = MembresiaBL.ObtenerMembresiaPorId(idMembresia);
+
+            if (membresia == null)
+            {
+                TempData["Error"] = "La membresía seleccionada no existe.";
+                return RedirectToAction("MostrarMembresiaU");
+            }
+
+            var inscripcionEN = new InscripcionEN
             {
                 IdUsuario = idUsuario.Value,
                 IdMembresia = idMembresia,
-                IdEstado = 1, // Asumiendo que 1 es el estado "Activo"
-                FechaInscripcion = DateTime.Now, // Asignar fecha actual
-                FechaVencimiento = DateTime.Now.AddMonths(1) // Establecer fecha de vencimiento (ajustar según tu lógica)
+                IdEstado = 1,
+                FechaInscripcion = DateTime.Now,
+                FechaVencimiento = DateTime.Now.AddMonths(1)
             };
 
-            InscripcionBL.GuardarInscripcion(inscripcionEN);
-
-            if (ModelState.IsValid)
-            {
-                InscripcionBL.GuardarInscripcion(inscripcionEN);
-                TempData["Mensaje"] = "Solicitud enviada correctamente";
-                return RedirectToAction("MostrarInscripcion", new { idMembresia = idMembresia });
-            }
-            else
-            {
-                TempData["Error"] = "¡Debe completar todos los campos!. Vuelva a intentarlo";
-
-            }
-
-            return RedirectToAction("MostrarInscripcion", new { idMembresia = idMembresia });
+            return View("ConfirmarInscripcion", inscripcionEN);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult GuardarInscripcionConfirmada(InscripcionEN inscripcionEN)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["Error"] = "Error al procesar la inscripción.";
+                return RedirectToAction("MostrarMembresiaU");
+            }
 
-
+            InscripcionBL.GuardarInscripcion(inscripcionEN);
+            TempData["Mensaje"] = "¡Inscripción realizada con éxito!";
+            return RedirectToAction("MostrarMembresiaU");
+        }
     }
 }
