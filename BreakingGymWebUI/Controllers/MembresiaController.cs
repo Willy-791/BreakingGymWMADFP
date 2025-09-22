@@ -103,6 +103,15 @@ namespace BreakingGymWeb.Controllers
             }
             if (ModelState.IsValid)
             {
+                //  Validar si ya existe un estado con el mismo nombre
+                var listaMembresia = MembresiaBL.MostrarMembresia();
+                bool existe = listaMembresia.Any(m => m.Nombre.ToLower().Trim() == pmembresiaEN.Nombre.ToLower().Trim());
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El membresia que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
                 MembresiaBL.GuardarMembresia(pmembresiaEN);
                 TempData["Mensaje"] = " Membresía guardada correctamente";
                 return RedirectToAction(nameof(MostrarMembresia));
@@ -147,6 +156,17 @@ namespace BreakingGymWeb.Controllers
             }
             if (ModelState.IsValid)
             {
+                //  Validar si ya existe un estado con el mismo nombre
+                var listaMembresia = MembresiaBL.MostrarMembresia();
+                bool existe = listaMembresia.Any(m =>
+                    m.Nombre.ToLower().Trim() == pmembresiaEN.Nombre.ToLower().Trim()
+                    && m.Id != pmembresiaEN.Id); // ✅ evitar que choque con su propio nombre
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El membresia que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
                 MembresiaBL.ModificarMembresia(pmembresiaEN);
                 TempData["Mensaje"] = " Membresía modificada correctamente";
                 return RedirectToAction(nameof(MostrarMembresia));

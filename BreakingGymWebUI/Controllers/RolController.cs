@@ -96,7 +96,9 @@ namespace BreakingGymWebUI.Controllers
             {
                 //  Validar si ya existe un estado con el mismo nombre
                 var listaRol = RolBL.MostrarRol();
-                bool existe = listaRol.Any(r => r.Nombre.ToLower().Trim() == rolEN.Nombre.ToLower().Trim());
+                bool existe = listaRol.Any(r =>
+                r.Nombre.ToLower().Trim() == rolEN.Nombre.ToLower().Trim()
+                && r.Id != rolEN.Id); // ✅ evitar que choque con su propio nombre
 
                 if (existe)
                 {
