@@ -39,6 +39,19 @@ namespace BreakingGymWebUI.Controllers
 
             return View("MostrarSU", lista);
         }
+        public IActionResult MostrarU()
+        {
+
+            var servicioBL = new ServicioBL();
+            var lista = ServicioBL.MostrarServicio();
+
+            if (lista == null)
+                lista = new List<ServicioEN>();
+
+
+            return View("MostrarSU", lista);
+        }
+
         [HttpGet]
         public IActionResult GuardarServicio()
         {

@@ -369,6 +369,23 @@ BEGIN
     SELECT * FROM Usuario WHERE Nombre LIKE @Nombre + '%';
 END;
 GO
+CREATE PROCEDURE ObtenerUsuarioPorId
+    @Id INT
+AS
+BEGIN
+    SELECT 
+        Id,
+        IdRol,
+        Nombre,
+        Apellido,
+        Celular,
+        Cuenta,
+        Contrasenia
+    FROM Usuario
+    WHERE Id = @Id;
+END;
+GO
+
 
 CREATE PROCEDURE BuscarMembresia @Nombre VARCHAR(30)
 AS
@@ -394,6 +411,25 @@ BEGIN
     WHERE Cuenta = @Cuenta AND Contrasenia = @Contrasenia;
 END;
 GO
+CREATE PROCEDURE BuscarUsuarioPorCelular
+    @Celular VARCHAR(20) = NULL
+AS
+BEGIN
+    SELECT 
+        u.Id,
+        u.Nombre,
+        u.Apellido,
+        u.Celular,
+        m.Nombre AS Membresia,
+        e.Nombre AS EstadoMembresia
+    FROM Usuario u
+    INNER JOIN Inscripcion i ON u.Id = i.IdUsuario
+    INNER JOIN Membresia m ON i.IdMembresia = m.Id
+    INNER JOIN Estado e ON i.IdEstado = e.Id
+    WHERE u.IdRol = 2 -- Solo clientes
+      AND (@Celular IS NULL OR u.Celular LIKE '%' + @Celular + '%');
+END;
+GO
 
 
 
@@ -408,4 +444,7 @@ EXEC GUardarUsuario @Nombre='William',@Apellido='Rosa',@Celular='27272727',@Cuen
 
 EXEC GuardarEstado 'Activo';
 EXEC GuardarEstado 'Inactivo';
+EXEC GuardarEstado 'Pendiente';
 GO
+EXEC GuardarServicio Baño, Baños
+EXEC GuardarMembresia Oro,1,30,30,Si
