@@ -7,11 +7,12 @@
 <div class="row justify-content-center">
     <div class="col-md-5">
         <div class="card shadow-lg border-0 rounded-3">
-            <div class="card-header bg-primary text-white text-center">
-                <h4>Iniciar Sesión</h4>
-            </div>
+           
+                <h2 class="text-white text-center">Iniciar Sesión</h2>
+            
             <div class="card-body">
                 <form asp-action="Login" method="post">
+                    
                     <div class="mb-3">
                         <label for="cuenta" class="form-label">Cuenta</label>
                         <input type="text" name="cuenta" class="form-control" placeholder="Ingrese su usuario" required />
@@ -33,9 +34,141 @@
                     </div>
                 </form>
             </div>
-            <div class="card-footer text-center text-muted">
-                BreakingGym Web © @DateTime.Now.Year
-            </div>
-        </div>
+            <div class="footer text-center">
+               BreakingGym Web © @DateTime.Now.Year
+           </div>
     </div>
 </div>
+<style>
+
+    body {
+    background: url('/FT_DeSobreNosotros/GYM.gif') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* HEADER */
+.card-header {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+    .card-header h4 {
+        margin: 0;
+        font-weight: bold;
+        color: #fff;
+    }
+
+/* LABELS */
+.form-label {
+    font-weight: 600;
+    color: #f1f1f1; 
+}
+
+/* INPUTS */
+.form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85); 
+    color: #000; 
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+    .form-control:focus {
+        box-shadow: 0 0 10px rgba(0, 128, 255, 0.6);
+    }
+
+/* BOTÓN */
+.btn-primary {
+    background: transparent; 
+    display: flex;  
+    justify-content: center; 
+    align-items: center;
+    gap: 1px;
+    padding: 12px 30px;
+    color: #ff4500; 
+    border: 2px solid #ff4500; 
+    border-radius: 10px;
+    font-weight: 600;   
+    font-size: 1.1rem;  
+    width: 100%;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.3); 
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: background-color 0.3s ease, 
+                color 0.3s ease,
+                transform 0.2s ease, 
+                box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff4500; 
+    color: white; 
+    transform: scale(1.05); 
+    border: 2px solid #ff4500;
+    box-shadow: 0 0 30px rgba(255, 69, 0, 0.6); 
+}
+
+.btn-primary:focus {
+    outline: none !important; 
+    border: 2px solid #ff4500 !important; 
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.9), 
+                0 0 35px rgba(255, 69, 0, 0.7) !important; 
+}
+
+.btn-primary:active {
+    background-color: #cc3700 !important; 
+    color: white;
+    transform: scale(0.98); 
+    border: 2px solid #ff4500 !important; 
+    box-shadow: 0 0 20px rgba(255, 69, 0, 1), 
+                0 0 40px rgba(255, 69, 0, 0.8) !important; 
+}
+
+
+
+/* FOOTER */
+.footer {
+    background-color: rgba(128, 128, 128, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    padding: 15px;
+    border-radius: 0 0 20px 20px; 
+    text-align: center;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 30px;
+    color: white;
+    margin-top: 20px;
+
+    border: 2px solid #ff4500 !important;
+
+    /* tonos naranja */
+    box-shadow: 
+        0 0 15px rgba(255, 69, 0, 0.8),
+        0 0 30px rgba(255, 140, 0, 0.6),
+        0 0 45px rgba(255, 0, 0, 0.5) !important;
+}
+
+
+
+</style>

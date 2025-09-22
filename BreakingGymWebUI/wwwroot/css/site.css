@@ -10,6 +10,10 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url('c:\users\mineducyt\.nuget\packages\bootstrap\5.3.8\contentfiles\any\any\wwwroot\css\bootstrap.min.css');
+@import url('c:\users\mineducyt\.nuget\packages\bootstrap\5.3.8\contentfiles\any\any\wwwroot\css\bootstrap.rtl.min.css');
+@import url('c:\users\mineducyt\.nuget\packages\bootstrap\5.3.8\contentfiles\any\any\wwwroot\css\bootstrap.rtl.css');
+@import url('c:\users\mineducyt\.nuget\packages\bootstrap\5.3.8\contentfiles\any\any\wwwroot\css\bootstrap.css');
 :root {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
