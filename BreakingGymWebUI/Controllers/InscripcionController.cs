@@ -23,6 +23,7 @@ namespace BreakingGymWebUI.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult GuardarInscripcion(InscripcionEN inscripcionEN)
         {
+            
             // Obtener IdUsuario del usuario logueado
             var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
             if (idUsuario == null)
@@ -49,5 +50,6 @@ namespace BreakingGymWebUI.Controllers
             TempData["MensajeExito"] = "¡Inscripción registrada correctamente!";
             return RedirectToAction("Index", "Membresia");
         }
+       
     }
 }

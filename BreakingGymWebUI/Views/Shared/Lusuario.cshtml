@@ -15,7 +15,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html"> Breaking GYM</a>
+        <a class="navbar-brand ps-3" href="@Url.Action("Index", "InicioUsuario")"> Breaking GYM</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -41,7 +41,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Resumen</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="@Url.Action("Index", "InicioUsuario")">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Inicio
                         </a>
@@ -50,7 +50,7 @@
                             Sobre Nosotros
                         </a>
                         <div class="sb-sidenav-menu-heading">Breaking GYM</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="@Url.Action("MostrarSU", "Servicio")">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Servicios
                         </a>
