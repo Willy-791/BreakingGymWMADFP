@@ -49,6 +49,15 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
+                //  Validar si ya existe un estado con el mismo nombre
+                var listaRol = RolBL.MostrarRol();
+                bool existe = listaRol.Any(r => r.Nombre.ToLower().Trim() == rolEN.Nombre.ToLower().Trim());
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El rol que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
                 RolBL.GuardarRol(rolEN);
                 TempData["ExitoGuardar"] = "Rol guardado correctamente.";
                 return RedirectToAction(nameof(Index));
@@ -85,6 +94,15 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
+                //  Validar si ya existe un estado con el mismo nombre
+                var listaRol = RolBL.MostrarRol();
+                bool existe = listaRol.Any(r => r.Nombre.ToLower().Trim() == rolEN.Nombre.ToLower().Trim());
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El rol que intentas modificar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
                 RolBL.ModificarRol(rolEN);
                 TempData["ExitoModificar"] = "Rol modificado correctamente.";
                 return RedirectToAction(nameof(Index));

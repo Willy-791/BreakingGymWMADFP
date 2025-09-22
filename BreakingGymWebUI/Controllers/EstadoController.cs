@@ -54,7 +54,7 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
-                // ✅ Validar si ya existe un estado con el mismo nombre
+                //  Validar si ya existe un estado con el mismo nombre
                 var listaEstados = EstadoBL.MostrarEstado();
                 bool existe = listaEstados.Any(e => e.Nombre.ToLower().Trim() == estadoEN.Nombre.ToLower().Trim());
 
