@@ -14,13 +14,18 @@ namespace BreakingGymWebBL
         {
             return UsuarioDAL.ValidarUsuario(cuenta, contrasenia);
         }
+        public static UsuarioEN ObtenerUsuarioPorId(int id)
+        {
+            
+            return UsuarioDAL.ObtenerUsuarioPorId(id);
+        }
         public static List<UsuarioEN> MostrarUsuario()
         {
             return UsuarioDAL.MostrarUsuario();
         }
-        public static List<UsuarioEN> BuscarUsuario(string nombre)
+        public static List<ClienteBusquedaEN> BuscarCliente(string celular)
         {
-            return UsuarioDAL.BuscarUsuario(nombre);
+            return UsuarioDAL.BuscarCliente(celular);
         }
         public static int GuardarUsuario(UsuarioEN pusuarioEN)
         {

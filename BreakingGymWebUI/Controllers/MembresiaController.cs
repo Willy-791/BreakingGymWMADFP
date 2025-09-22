@@ -1,4 +1,5 @@
-﻿using BreakingGymWebDAL;
+﻿using BreakingGymWebBL;
+using BreakingGymWebDAL;
 using BreakingGymWebEN;
 using BreakinGymWebBL;
 using Microsoft.AspNetCore.Mvc;
@@ -202,7 +203,7 @@ namespace BreakingGymWeb.Controllers
             Response.Headers["Pragma"] = "no-cache";
             Response.Headers["Expires"] = "0";
 
-            var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+            var idUsuario = HttpContext.Session.GetInt32("IdUsuario").Value;
 
             if (idUsuario == null)
             {
@@ -211,18 +212,20 @@ namespace BreakingGymWeb.Controllers
             }
 
             var membresia = MembresiaBL.ObtenerMembresiaPorId(idMembresia);
-
-            if (membresia == null)
+            var usuario=UsuarioBL.ObtenerUsuarioPorId(idUsuario);
+            if (usuario==null||membresia == null)
             {
-                TempData["Error"] = "La membresía seleccionada no existe.";
+                TempData["Error"] = "El usuario o membresía seleccionada no existe.";
                 return RedirectToAction("MostrarMembresiaU");
             }
 
             var inscripcionEN = new InscripcionEN
             {
-                IdUsuario = idUsuario.Value,
+                IdUsuario = idUsuario,
                 IdMembresia = idMembresia,
-                IdEstado = 1,
+                NombreUsuario = usuario.Nombre + " " + usuario.Apellido,
+                NombreMembresia = membresia.Nombre,
+                IdEstado = 3,
                 FechaInscripcion = DateTime.Now,
                 FechaVencimiento = DateTime.Now.AddMonths(1)
             };

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BreakingGymWebDAL
 {
-    public  class UsuarioDAL
+    public class UsuarioDAL
     {
         public static UsuarioEN ValidarUsuario(string cuenta, string contrasenia)
         {
@@ -24,22 +24,49 @@ namespace BreakingGymWebDAL
                 SqlDataReader reader = _comando.ExecuteReader();
                 UsuarioEN usuario = null;
 
-               
-                    if (reader.Read())
+
+                if (reader.Read())
+                {
+                    usuario = new UsuarioEN
                     {
-                        usuario = new UsuarioEN
-                        {
-                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                            IdRol = reader.GetInt32(reader.GetOrdinal("IdRol")),
-                            Cuenta = reader.GetString(reader.GetOrdinal("Cuenta")),
-                            Contrasenia = reader.GetString(reader.GetOrdinal("Contrasenia"))
-                        };
-                    }
+                        Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                        IdRol = reader.GetInt32(reader.GetOrdinal("IdRol")),
+                        Cuenta = reader.GetString(reader.GetOrdinal("Cuenta")),
+                        Contrasenia = reader.GetString(reader.GetOrdinal("Contrasenia"))
+                    };
+                }
 
                 _conn.Close();
                 return usuario;
             }
         }
+        public static UsuarioEN ObtenerUsuarioPorId(int id)
+        {
+            using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
+            {
+                _conn.Open();
+                SqlCommand _comando = new SqlCommand("ObtenerUsuarioPorId", _conn as SqlConnection);
+                _comando.CommandType = CommandType.StoredProcedure;
+                _comando.Parameters.Add(new SqlParameter("@Id", id));
+
+                IDataReader _reader = _comando.ExecuteReader();
+                if (_reader.Read())
+                {
+                    return new UsuarioEN
+                    {
+                        Id = _reader.GetInt32(0),
+                        IdRol = _reader.GetInt32(1),
+                        Nombre = _reader.GetString(2),
+                        Apellido = _reader.GetString(3),
+                        Celular = _reader.GetString(4),
+                        Cuenta = _reader.GetString(5),
+                        Contrasenia = _reader.GetString(6)
+                    };
+                }
+            }
+            return null;
+        }
+
 
 
         public static List<UsuarioEN> MostrarUsuario()
@@ -69,34 +96,35 @@ namespace BreakingGymWebDAL
             }
             return _Lista;
         }
-        public static List<UsuarioEN> BuscarUsuario(String Nombre)
+        public static List<ClienteBusquedaEN> BuscarCliente(string celular)
         {
-            List<UsuarioEN> _Lista = new List<UsuarioEN>();
-            using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
-            {
-                _conn.Open();
-                SqlCommand _comando =
-                new SqlCommand("BuscarUsuario", _conn as SqlConnection);
-                _comando.CommandType = CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("@Nombre", Nombre));
-                IDataReader _reader = _comando.ExecuteReader();
-                while (_reader.Read())
-                {
-                    _Lista.Add(new UsuarioEN
-                    {
-                        Id = _reader.GetInt32(0),
-                        IdRol = _reader.GetInt32(1),
-                        Nombre = _reader.GetString(2),
-                        Apellido = _reader.GetString(3),
-                        Celular = _reader.GetString(4),
-                        Cuenta = _reader.GetString(5),
-                        Contrasenia = _reader.GetString(6)
+            List<ClienteBusquedaEN> lista = new List<ClienteBusquedaEN>();
 
+            using (IDbConnection conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
+            {
+                conn.Open();
+                SqlCommand comando = new SqlCommand("BuscarUsuarioPorCelular", conn as SqlConnection);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add(new SqlParameter("@Celular",
+                    string.IsNullOrEmpty(celular) ? (object)DBNull.Value : celular));
+
+                IDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    lista.Add(new ClienteBusquedaEN
+                    {
+                        Id = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Apellido = reader.GetString(2),
+                        Celular = reader.GetString(3),
+                        Membresia = reader.GetString(4),
+                        EstadoMembresia = reader.GetString(5)
                     });
                 }
-                _conn.Close();
+                conn.Close();
             }
-            return _Lista;
+
+            return lista;
         }
         public static int AgregarUsuario(UsuarioEN pusuarioEN)
         {
@@ -126,7 +154,7 @@ namespace BreakingGymWebDAL
                 SqlCommand _comando =
                 new SqlCommand("EliminarUsuario", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("@Id",Id));
+                _comando.Parameters.Add(new SqlParameter("@Id", Id));
                 int resultado = _comando.ExecuteNonQuery();
                 _conn.Close();
                 return resultado;

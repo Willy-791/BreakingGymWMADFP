@@ -15,11 +15,8 @@
                     <p class="fs-5">¿Deseas confirmar tu inscripción a esta membresía?</p>
 
                     <ul class="list-group mb-4 text-start">
-                        <li class="list-group-item"><strong>ID Usuario:</strong> @Model.IdUsuario</li>
-                        <li class="list-group-item"><strong>ID Membresía:</strong> @Model.IdMembresia</li>
-                        <li class="list-group-item"><strong>ID Estado:</strong> @Model.IdEstado</li>
-                        <li class="list-group-item"><strong>Fecha Inscripción:</strong> @Model.FechaInscripcion?.ToString("dd/MM/yyyy")</li>
-                        <li class="list-group-item"><strong>Fecha Vencimiento:</strong> @Model.FechaVencimiento?.ToString("dd/MM/yyyy")</li>
+                        <p><strong>Usuario:</strong> @Model.NombreUsuario</p>
+                        <p><strong>Membresía:</strong> @Model.NombreMembresia</p>
                     </ul>
 
                     <form asp-action="GuardarInscripcionConfirmada" method="post">

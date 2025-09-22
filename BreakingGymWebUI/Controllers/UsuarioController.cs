@@ -18,14 +18,14 @@ namespace BreakingGymWebUI.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            var lista = UsuarioBL.MostrarUsuario(); 
+            var lista = UsuarioBL.MostrarUsuario();
             return View("MostrarUsuario", lista); // Vista: MostrarUsuarios.cshtml
         }
 
         // GET: Usuarios/GuardarUsuario
         public IActionResult GuardarUsuario()
         {
-            
+
             return View("GuardarUsuario"); // Vista: GuardarUsuario.cshtml
         }
 
@@ -59,7 +59,7 @@ namespace BreakingGymWebUI.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ModificarUsuario(UsuarioEN pusuarioEN)
         {
-           
+
             if (ModelState.IsValid)
             {
                 UsuarioBL.ModificarUsuario(pusuarioEN);
@@ -87,6 +87,14 @@ namespace BreakingGymWebUI.Controllers
         {
             UsuarioBL.EliminarUsuario(id);
             return RedirectToAction(nameof(MostrarUsuario));
+        }
+        public IActionResult BuscarCliente(string celular = null)
+        {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+                return RedirectToAction("Login", "Login");
+
+            var lista = UsuarioBL.BuscarCliente(celular);
+            return View("BuscarCliente", lista); // Vista multitabla
         }
     }
 }
