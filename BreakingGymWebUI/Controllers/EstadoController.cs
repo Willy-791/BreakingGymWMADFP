@@ -2,6 +2,7 @@
 using BreakingGymWebEN;
 using BreakinGymWebBL;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 namespace BreakingGymWebUI.Controllers
 {
@@ -50,12 +51,24 @@ namespace BreakingGymWebUI.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            if (ModelState.IsValid) 
-            { 
+
+            if (ModelState.IsValid)
+            {
+                // ✅ Validar si ya existe un estado con el mismo nombre
+                var listaEstados = EstadoBL.MostrarEstado();
+                bool existe = listaEstados.Any(e => e.Nombre.ToLower().Trim() == estadoEN.Nombre.ToLower().Trim());
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El estado que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
+
                 EstadoBL.GuardarEstado(estadoEN);
-                TempData["ExitoGuardar"] = "Servicio guardado correctamente.";
+                TempData["ExitoGuardar"] = "Estado guardado correctamente.";
                 return RedirectToAction(nameof(Index));
             }
+
             return View(estadoEN);
         }
         [HttpGet]
@@ -85,10 +98,22 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
+                var listaEstados = EstadoBL.MostrarEstado();
+                bool existe = listaEstados.Any(e =>
+                    e.Nombre.ToLower().Trim() == estadoEN.Nombre.ToLower().Trim()
+                    && e.Id != estadoEN.Id); // ✅ evitar que choque con su propio nombre
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El estado que intentas modificar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
+
                 EstadoBL.ModificarEstado(estadoEN);
                 TempData["ExitoModificar"] = "Estado modificado correctamente.";
                 return RedirectToAction(nameof(Index));
             }
+
             return View(estadoEN);
         }
         [HttpGet]
