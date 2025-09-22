@@ -203,7 +203,7 @@ namespace BreakingGymWeb.Controllers
             Response.Headers["Pragma"] = "no-cache";
             Response.Headers["Expires"] = "0";
 
-            var idUsuario = HttpContext.Session.GetInt32("IdUsuario").Value;
+            var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
 
             if (idUsuario == null)
             {
@@ -212,7 +212,7 @@ namespace BreakingGymWeb.Controllers
             }
 
             var membresia = MembresiaBL.ObtenerMembresiaPorId(idMembresia);
-            var usuario=UsuarioBL.ObtenerUsuarioPorId(idUsuario);
+            var usuario=UsuarioBL.ObtenerUsuarioPorId(idUsuario.Value);
             if (usuario==null||membresia == null)
             {
                 TempData["Error"] = "El usuario o membresía seleccionada no existe.";
@@ -221,7 +221,7 @@ namespace BreakingGymWeb.Controllers
 
             var inscripcionEN = new InscripcionEN
             {
-                IdUsuario = idUsuario,
+                IdUsuario = idUsuario.Value,
                 IdMembresia = idMembresia,
                 NombreUsuario = usuario.Nombre + " " + usuario.Apellido,
                 NombreMembresia = membresia.Nombre,
