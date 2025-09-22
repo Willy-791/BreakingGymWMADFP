@@ -49,7 +49,7 @@ namespace BreakingGymWebUI.Controllers
                 lista = new List<ServicioEN>();
 
 
-            return View("MostrarSU", lista);
+            return View("MostrarU", lista);
         }
 
         [HttpGet]
