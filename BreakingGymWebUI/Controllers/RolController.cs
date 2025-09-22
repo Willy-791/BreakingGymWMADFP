@@ -8,6 +8,10 @@ namespace BreakingGymWebUI.Controllers
     {
         public IActionResult Index()
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -26,6 +30,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult GuardarRol()
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -35,6 +43,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpPost]
         public IActionResult GuardarRol(RolEN rolEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (ModelState.IsValid)
             {
                 RolBL.GuardarRol(rolEN);
@@ -46,6 +58,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult ModificarRol(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -63,6 +79,10 @@ namespace BreakingGymWebUI.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ModificarRol(RolEN rolEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (ModelState.IsValid)
             {
                 RolBL.ModificarRol(rolEN);
@@ -74,6 +94,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult EliminarRol(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -88,6 +112,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpPost, ActionName("EliminarRol")]
         public IActionResult EliminarRolConfirmado(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             RolBL.EliminarRol(Id);
             TempData["ExitoEliminar"] = "Rol eliminado correctamente.";
             return RedirectToAction(nameof(Index));

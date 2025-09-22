@@ -19,6 +19,11 @@ namespace BreakingGymWeb.Controllers
         }
         public IActionResult MostrarMembresia()
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -36,6 +41,10 @@ namespace BreakingGymWeb.Controllers
         }
         public IActionResult MostrarMembresiaU()
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -68,6 +77,10 @@ namespace BreakingGymWeb.Controllers
         }
         public IActionResult GuardarMembresia()
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -79,6 +92,10 @@ namespace BreakingGymWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult GuardarMembresia(MembresiaEN pmembresiaEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -98,6 +115,10 @@ namespace BreakingGymWeb.Controllers
         }
         public IActionResult ModificarMembresia(int id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -115,6 +136,10 @@ namespace BreakingGymWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ModificarMembresia(MembresiaEN pmembresiaEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -135,6 +160,10 @@ namespace BreakingGymWeb.Controllers
         //GET
         public IActionResult EliminarMembresia(int id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -152,6 +181,10 @@ namespace BreakingGymWeb.Controllers
 
         public IActionResult EliminarMembresiaConfirmada(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -165,6 +198,10 @@ namespace BreakingGymWeb.Controllers
         [HttpGet]
         public IActionResult ConfirmarInscripcion(int idMembresia)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
 
             if (idUsuario == null)
@@ -196,6 +233,10 @@ namespace BreakingGymWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult GuardarInscripcionConfirmada(InscripcionEN inscripcionEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (!ModelState.IsValid)
             {
                 TempData["Error"] = "Error al procesar la inscripción.";

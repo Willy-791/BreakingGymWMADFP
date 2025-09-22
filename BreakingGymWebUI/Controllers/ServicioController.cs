@@ -9,6 +9,10 @@ namespace BreakingGymWebUI.Controllers
     {
         public IActionResult Index()
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -25,6 +29,7 @@ namespace BreakingGymWebUI.Controllers
         }
         public IActionResult MostrarSU() 
         {
+
             var servicioBL = new ServicioBL();
             var lista = ServicioBL.MostrarServicio();
 
@@ -37,6 +42,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult GuardarServicio()
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -46,6 +55,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpPost]
         public IActionResult GuardarServicio(ServicioEN servicioEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (ModelState.IsValid)
             {
                 ServicioBL.GuardarServicio(servicioEN);
@@ -57,6 +70,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult ModificarServicio(int id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             var servicio = ServicioBL.MostrarServicio().FirstOrDefault(s => s.Id == id);
             if (servicio == null) return NotFound();
             return View(servicio);
@@ -67,6 +84,10 @@ namespace BreakingGymWebUI.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ModificarServicio(ServicioEN servicoEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (ModelState.IsValid)
             {
                 ServicioBL.ModificarServicio(servicoEN);
@@ -78,6 +99,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult EliminarServicio(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             var servicio = ServicioBL.MostrarServicio().FirstOrDefault(S => S.Id == Id);
             if (servicio == null) return NotFound();
             return View(servicio); // La vista debe llamarse EliminarTarea.cshtml
@@ -85,6 +110,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpPost, ActionName("EliminarServicio")]
         public IActionResult EliminarServicioConfirmado(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             ServicioBL.EliminarServicio(Id);
             TempData["ExitoEliminar"] = "Servicio eliminado correctamente.";
             return RedirectToAction(nameof(Index));

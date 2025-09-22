@@ -29,6 +29,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult GuardarEstado()
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -38,6 +42,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpPost]
         public IActionResult GuardarEstado(EstadoEN estadoEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -53,6 +61,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult ModificarEstado(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -67,6 +79,10 @@ namespace BreakingGymWebUI.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ModificarEstado(EstadoEN estadoEN)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (ModelState.IsValid)
             {
                 EstadoBL.ModificarEstado(estadoEN);
@@ -78,6 +94,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpGet]
         public IActionResult EliminarEstado(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
@@ -89,6 +109,10 @@ namespace BreakingGymWebUI.Controllers
         [HttpPost, ActionName("EliminarEstado")]
         public IActionResult EliminarEstadoConfirmado(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
             EstadoBL.EliminarEstado(Id);
             TempData["ExitoEliminar"] = "Estado eliminado correctamente.";
             return RedirectToAction(nameof(Index));
