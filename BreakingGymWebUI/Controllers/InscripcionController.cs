@@ -6,50 +6,101 @@ namespace BreakingGymWebUI.Controllers
 {
     public class InscripcionController : Controller
     {
-        public IActionResult Index()
+        public IActionResult MostrarInscripcion()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var inscripcionBL = new InscripcionBL();
+                var lista = InscripcionBL.MostrarInscripcion();
+
+                if (lista == null)
+                    lista = new List<InscripcionEN>();
+
+
+                return View("MostrarInscripcion", lista);
+            }
         }
-       
-        [HttpPost]
-        public IActionResult GuardarInscripcion()
+
+        
+        
+        
+        [HttpGet]
+        public IActionResult ModificarInscripcion(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
 
-            return View("GuardarInscripcion"); 
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            var inscripcion = InscripcionBL.MostrarInscripcion().FirstOrDefault(s => s.Id == Id);
+            if (inscripcion == null) return NotFound();
+            return View(inscripcion);
         }
 
-        // POST: Usuarios/GuardarUsuario
+        // POST: Tarea/ModificarTarea/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult GuardarInscripcion(InscripcionEN inscripcionEN)
+        public IActionResult ModificarInscripcion(InscripcionEN inscripcionEN)
         {
-            
-            // Obtener IdUsuario del usuario logueado
-            var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
-            if (idUsuario == null)
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Login", "Usuario");
+                var listaInscripcion = EstadoBL.MostrarEstado();
+                bool existe = listaInscripcion.Any(e =>
+                    e.Nombre.ToLower().Trim() == inscripcionEN.IdUsuario.ToString().Trim()
+                    && e.Id != inscripcionEN.Id); // ✅ evitar que choque con su propio nombre
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El estado que intentas modificar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                InscripcionBL.ModificarInscripcion(inscripcionEN);
+                TempData["ExitoModificar"] = "Inscripcion modificada correctamente.";
+                return RedirectToAction(nameof(Index));
             }
 
-            // Obtener membresía seleccionada para calcular FechaVencimiento
-           
-
-            // Crear objeto Inscripcion
-            var inscripcion = new InscripcionEN
-            {
-                IdUsuario = idUsuario.Value,
-             
-                IdEstado = 1, // Activa
-                FechaInscripcion = DateTime.Now,
-            
-            };
-
-            // Guardar en la base de datos
-            InscripcionBL.GuardarInscripcion(inscripcion);
-
-            TempData["MensajeExito"] = "¡Inscripción registrada correctamente!";
-            return RedirectToAction("Index", "Membresia");
+            return View(inscripcionEN);
         }
-       
+        [HttpGet]
+        public IActionResult EliminarInscripcion(int Id)
+        {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            var inscripcion = InscripcionBL.MostrarInscripcion().FirstOrDefault(E => E.Id == Id);
+            if (inscripcion == null) return NotFound();
+            return View(inscripcion);
+        }
+        [HttpPost, ActionName("EliminarInscripcion")]
+        public IActionResult EliminarEstadoConfirmado(int Id)
+        {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
+            InscripcionBL.EliminarInscripcion(Id);
+            TempData["ExitoEliminar"] = "Estado eliminado correctamente.";
+            return RedirectToAction(nameof(MostrarInscripcion));
+        }
+
+
     }
 }
+

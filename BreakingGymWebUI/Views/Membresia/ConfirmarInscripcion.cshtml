@@ -15,8 +15,9 @@
                     <p class="fs-5">¿Deseas confirmar tu inscripción a esta membresía?</p>
 
                     <ul class="list-group mb-4 text-start">
-                        <p><strong>Usuario:</strong> @Model.NombreUsuario</p>
-                        <p><strong>Membresía:</strong> @Model.NombreMembresia</p>
+                        <p><strong>Nombre:</strong> @Model.Nombre_Usuario</p>
+                        <p><strong>Apellido:</strong> @Model.Apellido_Usuario</p>
+                        <p><strong>Membresía:</strong> @Model.Nombre_Membresia</p>
                     </ul>
 
                     <form asp-action="GuardarInscripcionConfirmada" method="post">

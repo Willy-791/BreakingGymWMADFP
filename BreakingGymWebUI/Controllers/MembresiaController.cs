@@ -252,8 +252,9 @@ namespace BreakingGymWeb.Controllers
             {
                 IdUsuario = idUsuario.Value,
                 IdMembresia = idMembresia,
-                NombreUsuario = usuario.Nombre + " " + usuario.Apellido,
-                NombreMembresia = membresia.Nombre,
+                Nombre_Usuario = usuario.Nombre,
+                Apellido_Usuario=usuario.Apellido,
+                Nombre_Membresia = membresia.Nombre,
                 IdEstado = 3,
                 FechaInscripcion = DateTime.Now,
                 FechaVencimiento = DateTime.Now.AddMonths(1)
