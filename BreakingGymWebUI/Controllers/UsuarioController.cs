@@ -75,14 +75,17 @@ namespace BreakingGymWebUI.Controllers
                 bool existe = listaU.Any(u =>u.Cuenta.ToLower().Trim() == pusuarioEN.Cuenta.ToLower().Trim()
                 && u.Id != pusuarioEN.Id); // evitar que choque con su propio nombre
 
-                bool existeN = listaU.Any(u => u.Celular.ToLower().Trim() == pusuarioEN.Celular.ToLower().Trim());
+                bool existeN = listaU.Any(c => c.Celular.ToLower().Trim() == pusuarioEN.Celular.ToLower().Trim()
+                 && c.Id != pusuarioEN.Id); // evitar que choque con su propio celular
                 if (existe || existeN)
                 {
                     TempData["ErrorDuplicado"] = "Algunos datos que intentas guardar ya existen.";
                     return RedirectToAction(nameof(ModificarUsuario));
                 }
+                TempData["ExitoModificar"] = "¡Usuario Modificado correctamente!";
                 UsuarioBL.ModificarUsuario(pusuarioEN);
                 return RedirectToAction(nameof(MostrarUsuario));
+
             }
             return View("ModificarUsuario", pusuarioEN);
         }
@@ -104,7 +107,9 @@ namespace BreakingGymWebUI.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EliminarUsuarioConfirmado(int id)
         {
-            UsuarioBL.EliminarUsuario(id);
+      
+            EstadoBL.EliminarEstado(id);
+            TempData["ExitoEliminar"] = "Estado eliminado correctamente.";
             return RedirectToAction(nameof(MostrarUsuario));
         }
         public IActionResult BuscarCliente(string celular = null)

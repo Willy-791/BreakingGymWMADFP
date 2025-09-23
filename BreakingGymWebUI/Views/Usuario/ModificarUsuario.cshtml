@@ -63,29 +63,33 @@
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/Usuario.js"></script>
-
     <script>
-        @if (TempData["MensajeExito"] != null)
-        {
-                <text>
-                    Swal.fire({
-                        icon: "success",
-                        title: "Éxito",
-                        text: "@TempData["MensajeExito"]"
-                    });
-                </text>
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+           
+            @if (TempData["ExitoModificar"] != null)
+            {
+                                <text>
+                                    Swal.fire({
+                                        icon: "success",
+                                        title: "Éxito",
+                                        text: "@TempData["ExitoModificar"]"
+                                    });
+                                </text>
+            }
+           
 
-        @if (TempData["ErrorDuplicado"] != null)
-        {
-                <text>
-                    Swal.fire({
-                        icon: "error",
-                        title: "Error",
-                        text: "@TempData["ErrorDuplicado"]"
-                    });
-                </text>
-        }
+            @* Errores (ejemplo duplicado) *@
+            @if (TempData["ErrorDuplicado"] != null)
+            {
+                                <text>
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Error",
+                                        text: "@TempData["ErrorDuplicado"]"
+                                    });
+                                </text>
+            }
+        });
     </script>
 }
 
