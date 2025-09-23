@@ -7,123 +7,105 @@
 #060A0D -> Casi negro
 ====================== */
 
-body {
-    background-color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-}
-
-/* Contenedor principal */
-.fila {
+.fila1 {
     display: flex;
-    justify-content: center;
-    padding: 60px 0;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    padding: 60px 0; /* Similar a py-lg-5 */
 }
 
-/* Texto central */
-.columna {
+
+.columna1 {
     width: 100%;
+    max-width: 600px; /* Similar a ocupar 6/12 en pantallas grandes */
     text-align: center;
 }
 
-/* Título */
-.titulo {
-    font-weight: 600;
+/* ------------------------------- */
+/* Estilos de texto */
+/* ------------------------------- */
+.titulo1 {
+    font-weight: 300; /* fw-light */
+    font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #C5630C;
 }
 
-/* Texto */
-.texto {
-    font-size: 1.4rem; /* Aumentado el tamaño */
-    color: #ffffff;
-    line-height: 1.1; /* Un poco más de espacio entre líneas */
+.texto1 {
+    font-size: 1.1rem; /* lead */
+    color: #6c757d; /* text-muted */
+    line-height: 1.6;
 }
 
-
-/* Sección álbum */
-.album {
-    background-color: #33353A;
+/* ------------------------------- */
+/* Estilo del álbum */
+/* ------------------------------- */
+.album1 {
+    background-color: #f8f9fa; /* Fondo claro */
     padding: 3rem 0;
-    border-radius: 12px;
 }
 
-/* Contenedor */
-.container {
+/* Contenedor central */
+.container1 {
     max-width: 1400px;
     margin: 0 auto;
 }
 
-/* Fila */
-.row {
+/* ------------------------------- */
+/* Fila de tarjetas */
+/* ------------------------------- */
+.row1 {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
+    gap: 1rem; /* Espaciado entre tarjetas */
 }
 
-/* Columnas */
-.col {
-    flex: 1 0 30%;
-    max-width: 400px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Cada columna / tarjeta */
+.col1 {
+    flex: 1 0 30%; /* Tres tarjetas por fila aprox */
 }
 
-/* Tarjetas */
-.card {
-    background-color: #415057;
-    border-radius: 1rem;
+/* ------------------------------- */
+/* Tarjeta */
+/* ------------------------------- */
+.card1 {
+    background-color: #fff;
+    border-radius: 0.5rem;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
 }
 
-/* Hover tarjeta */
-.card1:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.5);
-}
-
-/* Imágenes */
-.card1-img-top {
+/* Imagen de la tarjeta: todas iguales */
+.card-img-top1 {
     width: 100%;
-    height: 450px;
-    object-fit: cover;
+    height: 500px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Recorta sin deformar */
+    display: block;
 }
 
-/* Cuerpo tarjeta */
-.card-body {
-    padding: 1.2rem;
-    background-color: white;
-    border-radius: 2px;
+/* Cuerpo de la tarjeta */
+.card-body1 {
+    padding: 1rem;
 }
 
-/* Texto de las tarjetas */
-.card-text {
+/* Texto dentro de la tarjeta */
+.card-text1 {
     margin: 0;
     font-size: 1rem;
-    color: white;
-    transition: color 0.3s ease;
+    color: #333;
 }
 
-    /* Hover texto */
-    .card-text:hover {
-        color: #C5630C;
-    }
-
+/* ------------------------------- */
 /* Responsivo */
-@media (max-width: 992px) {
+/* ------------------------------- */
+@media (max-width: 768px) {
     .col {
-        flex: 1 0 45%;
+        flex: 1 0 48%; /* Dos tarjetas por fila en tablet */
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     .col {
-        flex: 1 0 100%;
+        flex: 1 0 100%; /* Una tarjeta por fila en móvil */
     }
 }
