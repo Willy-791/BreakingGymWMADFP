@@ -3,6 +3,7 @@ using BreakingGymWebDAL;
 using BreakingGymWebEN;
 using BreakinGymWebBL;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BreakingGymWeb.Controllers
 {
@@ -137,6 +138,8 @@ namespace BreakingGymWeb.Controllers
             {
                 var membresia = MembresiaBL.MostrarMembresia().FirstOrDefault(m => m.Id == id);
                 if (membresia == null) return NotFound();
+                var servicioBL = ServicioBL.MostrarServicio();
+                ViewBag.Membresias = new SelectList(servicioBL, "Id", "Nombre", membresia.IdServicio);
                 return View("ModificarMembresia", membresia);
             }
         }
@@ -156,8 +159,12 @@ namespace BreakingGymWeb.Controllers
             }
             if (ModelState.IsValid)
             {
+                
                 //  Validar si ya existe un estado con el mismo nombre
+                
+
                 var listaMembresia = MembresiaBL.MostrarMembresia();
+              
                 bool existe = listaMembresia.Any(m =>
                     m.Nombre.ToLower().Trim() == pmembresiaEN.Nombre.ToLower().Trim()
                     && m.Id != pmembresiaEN.Id); //  evitar que choque con su propio nombre
@@ -167,6 +174,8 @@ namespace BreakingGymWeb.Controllers
                     TempData["ErrorDuplicado"] = "La membresia que intentas guardar ya existe.";
                     return RedirectToAction(nameof(MostrarMembresia));
                 }
+                var servicioBL = ServicioBL.MostrarServicio();
+                ViewBag.Membresias = new SelectList(servicioBL, "Id", "Nombre", pmembresiaEN.IdServicio);
                 MembresiaBL.ModificarMembresia(pmembresiaEN);
                 TempData["ExitoModificar"] = " Membresía modificada correctamente";
                 return RedirectToAction(nameof(MostrarMembresia));

@@ -24,9 +24,11 @@
                             <span asp-validation-for="Nombre" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label asp-for="IdServicio" class="form-label fw-bold"></label>
-                            <input asp-for="IdServicio" class="form-control" placeholder="ID de Servicio" />
-                            <span asp-validation-for="IdServicio" class="text-danger"></span>
+                            <label asp-for="IdServicio" class="form-label fw-bold">Servicio</label>
+                          <select asp-for="IdServicio" class="form-select" asp-items="ViewBag.Membresias">
+                                <option value="">-- Seleccione un servicio --</option>
+                                </select>
+                           
                         </div>
                         <div class="mb-">
                             <label asp-for="Precio" class="form-label fw-bold"></label>

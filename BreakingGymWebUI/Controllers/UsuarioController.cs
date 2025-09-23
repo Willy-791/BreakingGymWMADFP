@@ -71,6 +71,7 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
+             
                 var listaU = UsuarioBL.MostrarUsuario();
                 bool existe = listaU.Any(u =>u.Cuenta.ToLower().Trim() == pusuarioEN.Cuenta.ToLower().Trim()
                 && u.Id != pusuarioEN.Id); // evitar que choque con su propio nombre
