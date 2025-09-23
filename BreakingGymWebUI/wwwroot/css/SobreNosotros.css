@@ -1,97 +1,129 @@
-﻿body {
+﻿/* ====== PALETA ======
+#C5630C -> Naranja principal
+#A47F6F -> Marrón suave
+#415057 -> Gris azulado
+#33353A -> Gris oscuro
+#1A1F24 -> Fondo oscuro
+#060A0D -> Casi negro
+====================== */
+
+body {
+    background-color: #1A1F24;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f8f9fa;
+    margin: 0;
+    padding: 0;
 }
 
-/* Contenedor tipo "row" */
+/* Contenedor principal */
 .fila {
     display: flex;
-    justify-content: center; /* centra el contenido horizontalmente */
-    padding: 60px 0; /* igual que py-lg-5 */
+    justify-content: center;
+    padding: 60px 0;
 }
 
-/* Contenedor tipo "col-lg-6 col-md-8 mx-auto" */
+/* Texto central */
 .columna {
     width: 100%;
-    max-width: 600px; /* similar a ocupar 6/12 en pantallas grandes */
     text-align: center;
 }
 
-/* fw-light */
+/* Título */
 .titulo {
-    font-weight: 300;
-    font-size: 2.5rem;
+    font-weight: 600;
     margin-bottom: 20px;
+    color: #C5630C;
 }
 
-/* lead + text-muted */
+/* Texto */
 .texto {
-    font-size: 1.1rem;
-    color: #6c757d;
-    line-height: 1.6;
+    font-size: 1.4rem; /* Aumentado el tamaño */
+    color: #ffffff;
+    line-height: 1.1; /* Un poco más de espacio entre líneas */
 }
 
-/* Estilo del álbum */
+
+/* Sección álbum */
 .album {
-    background-color: #f8f9fa; /* Fondo claro */
+    background-color: #33353A;
     padding: 3rem 0;
+    border-radius: 12px;
 }
 
-/* Contenedor central */
+/* Contenedor */
 .container {
     max-width: 1400px;
     margin: 0 auto;
 }
 
-/* Fila de tarjetas */
+/* Fila */
 .row {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem; /* Espaciado entre tarjetas */
+    gap: 1.5rem;
+    justify-content: center;
 }
 
-/* Cada columna / tarjeta */
+/* Columnas */
 .col {
-    flex: 1 0 30%; /* Tres tarjetas por fila aprox */
+    flex: 1 0 30%;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Tarjeta */
+/* Tarjetas */
 .card {
-    background-color: #fff;
-    border-radius: 0.5rem;
+    background-color: #415057;
+    border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
-/* Imagen de la tarjeta: todas iguales */
-.card-img-top {
+/* Hover tarjeta */
+.card1:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+}
+
+/* Imágenes */
+.card1-img-top {
     width: 100%;
-    height: 500px; /* altura fija para todas las imágenes */
-    object-fit: cover; /* recorta sin deformar */
-    display: block;
+    height: 450px;
+    object-fit: cover;
 }
 
-/* Cuerpo de la tarjeta */
+/* Cuerpo tarjeta */
 .card-body {
-    padding: 1rem;
+    padding: 1.2rem;
+    background-color: #1A1F24;
+    border-radius: 2px;
 }
 
-/* Texto dentro de la tarjeta */
+/* Texto de las tarjetas */
 .card-text {
     margin: 0;
     font-size: 1rem;
-    color: #333;
+    color: #f1f1f1;
+    transition: color 0.3s ease;
 }
 
+    /* Hover texto */
+    .card-text:hover {
+        color: #C5630C;
+    }
+
 /* Responsivo */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .col {
-        flex: 1 0 48%; /* Dos tarjetas por fila en tablet */
+        flex: 1 0 45%;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .col {
-        flex: 1 0 100%; /* Una tarjeta por fila en móvil */
+        flex: 1 0 100%;
     }
 }
