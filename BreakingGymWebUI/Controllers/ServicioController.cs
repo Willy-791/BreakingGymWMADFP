@@ -116,7 +116,8 @@ namespace BreakingGymWebUI.Controllers
             {
                 //  Validar si ya existe un estado con el mismo nombre
                 var listaServicio = ServicioBL.MostrarServicio();
-                bool existe = listaServicio.Any(s => s.Nombre.ToLower().Trim() == servicioEN.Nombre.ToLower().Trim());
+                bool existe = listaServicio.Any(s => s.Nombre.ToLower().Trim() == servicioEN.Nombre.ToLower().Trim()
+                 && s.Id != servicioEN.Id);
 
                 if (existe)
                 {
@@ -137,6 +138,7 @@ namespace BreakingGymWebUI.Controllers
             Response.Headers["Expires"] = "0";
 
             var servicio = ServicioBL.MostrarServicio().FirstOrDefault(S => S.Id == Id);
+           
             if (servicio == null) return NotFound();
             return View(servicio); // La vista debe llamarse EliminarTarea.cshtml
         }
