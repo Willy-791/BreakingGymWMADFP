@@ -76,7 +76,7 @@ namespace BreakingGymWebDAL
             {
                 _conn.Open();
                 SqlCommand _comando =
-                new SqlCommand("MostrarUsuario", _conn as SqlConnection);
+                new SqlCommand("MostrarUsuarioNombre", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
                 IDataReader _reader = _comando.ExecuteReader();
                 while (_reader.Read())
@@ -85,11 +85,13 @@ namespace BreakingGymWebDAL
                     {
                         Id = _reader.GetInt32(0),
                         IdRol = _reader.GetInt32(1),
-                        Nombre = _reader.GetString(2),
-                        Apellido = _reader.GetString(3),
-                        Celular = _reader.GetString(4),
-                        Cuenta = _reader.GetString(5),
-                        Contrasenia = _reader.GetString(6)
+                        Nombre_Rol = _reader.GetString(2),
+                        Nombre = _reader.GetString(3),
+                        Apellido = _reader.GetString(4),
+                        Celular = _reader.GetString(5),
+                        Cuenta = _reader.GetString(6),
+                        Contrasenia = _reader.GetString(7)
+
                     });
                 }
                 _conn.Close();

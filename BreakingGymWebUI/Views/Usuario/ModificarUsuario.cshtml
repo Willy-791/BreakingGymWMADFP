@@ -13,7 +13,9 @@
                 </div>
                 <div class="card-body p-4">
                     <form asp-action="ModificarUsuario" method="post" id="ModificarUsuarioForm">
+                        <input asp-for="Nombre_Rol" type="hidden" />
                         <input type="hidden" asp-for="Id" />
+
                         <div class="mb-3">
                             <label asp-for="IdRol" class="form-label fw-bold"></label>
                             <input asp-for="IdRol" id="IdRol" class="form-control" placeholder="Rol" />
