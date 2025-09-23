@@ -19,6 +19,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">IdServicio</th>
+						<th scope="col">Nombre_Servicio</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Duración</th>
                         <th scope="col">Descripción</th>
@@ -34,6 +35,7 @@
                                 <td>@membr.Id</td>
                                 <td>@membr.Nombre</td>
                                 <td>@membr.IdServicio</td>
+                                <td>@membr.Nombre_Servicio</td>
                                 <td>@membr.Precio</td>
                                 <td>@membr.Duracion</td>
                                 <td>@membr.Descripcion</td>
@@ -62,7 +64,61 @@
         </div>
     </div>
 </div>
-@section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Membresia.js"></script>
-}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        @* Éxitos *@
+        @if (TempData["ExitoGuardar"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: "success",
+                        title: "Éxito",
+                        text: "@Html.Raw(TempData["ExitoGuardar"])"
+                    });
+                </text>
+        }
+        @if (TempData["ExitoModificar"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: "success",
+                        title: "Éxito",
+                        text: "@Html.Raw(TempData["ExitoModificar"])"
+                    });
+                </text>
+        }
+        @if (TempData["ExitoEliminar"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: "success",
+                        title: "Éxito",
+                        text: "@Html.Raw(TempData["ExitoEliminar"])"
+                    });
+                </text>
+        }
+
+        @* Errores *@
+        @if (TempData["ErrorDuplicado"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "@Html.Raw(TempData["ErrorDuplicado"])"
+                    });
+                </text>
+        }
+        @if (TempData["CamposVacios"] != null)
+        {
+                <text>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "@Html.Raw(TempData["CamposVacios"])"
+                    });
+                </text>
+        }
+    });
+</script>

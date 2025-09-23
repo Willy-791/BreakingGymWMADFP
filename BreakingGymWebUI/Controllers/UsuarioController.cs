@@ -42,11 +42,11 @@ namespace BreakingGymWebUI.Controllers
                 bool existeN = listaU.Any(u => u.Celular.ToLower().Trim() == pusuarioEN.Celular.ToLower().Trim());
                 if (existeC || existeN) 
                 {
-                    TempData["ErrorDuplicado"] = "El usuario que intentas guardar ya existe.";
+                    TempData["ErrorDuplicado"] = "La cuenta ingresada ya esta siendo utilizada por  alguien mas.";
                     return RedirectToAction(nameof(GuardarUsuario));
                 }
                 UsuarioBL.GuardarUsuario(pusuarioEN);
-                TempData["MensajeExito"] = "¡Usuario registrado correctamente!";
+                TempData["MensajeExito"] = "Tu usuario sea registrado correctamente";
             }
             return View("GuardarUsuario", pusuarioEN);
         }
@@ -79,10 +79,10 @@ namespace BreakingGymWebUI.Controllers
                  && c.Id != pusuarioEN.Id); // evitar que choque con su propio celular
                 if (existe || existeN)
                 {
-                    TempData["ErrorDuplicado"] = "Algunos datos que intentas guardar ya existen.";
-                    return RedirectToAction(nameof(ModificarUsuario));
+                    TempData["ErrorDuplicadoModificado"] = "Algunos datos que intentas guardar ya existen.";
+                    return RedirectToAction(nameof(MostrarUsuario));
                 }
-                TempData["ExitoModificar"] = "¡Usuario Modificado correctamente!";
+                TempData["ExitoModificar"] = "Usuario Modificado correctamente";
                 UsuarioBL.ModificarUsuario(pusuarioEN);
                 return RedirectToAction(nameof(MostrarUsuario));
 
@@ -109,7 +109,7 @@ namespace BreakingGymWebUI.Controllers
         {
       
             EstadoBL.EliminarEstado(id);
-            TempData["ExitoEliminar"] = "Estado eliminado correctamente.";
+            TempData["ExitoEliminar"] = "Usuario eliminado correctamente.";
             return RedirectToAction(nameof(MostrarUsuario));
         }
         public IActionResult BuscarCliente(string celular = null)

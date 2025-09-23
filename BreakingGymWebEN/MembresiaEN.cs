@@ -12,8 +12,11 @@ namespace BreakingGymWebEN
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int IdServicio { get; set; }
+        public string? Nombre_Servicio { get; set; }
         public int Precio { get; set; }
         public string Duracion { get; set; }
         public string Descripcion { get; set; }
+        
     }
+
 }

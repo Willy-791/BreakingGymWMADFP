@@ -109,16 +109,16 @@ namespace BreakingGymWeb.Controllers
 
                 if (existe)
                 {
-                    TempData["ErrorDuplicado"] = "El membresia que intentas guardar ya existe.";
-                    return RedirectToAction(nameof(Index));
+                    TempData["ErrorDuplicado"] = "La membresia que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(MostrarMembresia));
                 }
                 MembresiaBL.GuardarMembresia(pmembresiaEN);
-                TempData["Mensaje"] = " Membresía guardada correctamente";
+                TempData["ExitoGuardar"] = "Membresía guardada correctamente";
                 return RedirectToAction(nameof(MostrarMembresia));
             }
             else
             {
-                TempData["Error"] = "¡Debe completar todos los campos!. Vuelva a intentarlo";
+                TempData["CamposVacios"] = "¡Debe completar todos los campos!. Vuelva a intentarlo";
 
             }
             return View(pmembresiaEN);
@@ -160,20 +160,20 @@ namespace BreakingGymWeb.Controllers
                 var listaMembresia = MembresiaBL.MostrarMembresia();
                 bool existe = listaMembresia.Any(m =>
                     m.Nombre.ToLower().Trim() == pmembresiaEN.Nombre.ToLower().Trim()
-                    && m.Id != pmembresiaEN.Id); // ✅ evitar que choque con su propio nombre
+                    && m.Id != pmembresiaEN.Id); //  evitar que choque con su propio nombre
 
                 if (existe)
                 {
-                    TempData["ErrorDuplicado"] = "El membresia que intentas guardar ya existe.";
-                    return RedirectToAction(nameof(Index));
+                    TempData["ErrorDuplicado"] = "La membresia que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(MostrarMembresia));
                 }
                 MembresiaBL.ModificarMembresia(pmembresiaEN);
-                TempData["Mensaje"] = " Membresía modificada correctamente";
+                TempData["ExitoModificar"] = " Membresía modificada correctamente";
                 return RedirectToAction(nameof(MostrarMembresia));
             }
             else
             {
-                TempData["Error"] = "¡No se pudo modificar!. Complete todos los campos";
+                TempData["CamposVacios"] = "¡No se pudo modificar!. Complete todos los campos";
             }
             return View("ModificarMembresia", pmembresiaEN);
         }
@@ -211,7 +211,7 @@ namespace BreakingGymWeb.Controllers
                 return RedirectToAction("Login", "Login");
             }
             MembresiaBL.EliminarMembresia(Id);
-            TempData["Mensaje"] = "Membresía eliminada correctamente.";
+            TempData["ExitoEliminar"] = "Membresía eliminada correctamente.";
             return RedirectToAction(nameof(MostrarMembresia));
         }
       

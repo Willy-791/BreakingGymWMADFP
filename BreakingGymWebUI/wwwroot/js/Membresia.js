@@ -29,8 +29,15 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
 
             const nombre = document.getElementById("Nombre").value.trim();
+            const idServicio = document.getElementById("IdServicio").value.trim();
+            const precio = document.getElementById("Precio").value.trim();
+            const duracion = document.getElementById("Duracion").value.trim();
+            const descripcion = document.getElementById("Descripcion").value.trim();
+            
+   
 
-            if (!nombre) {
+
+            if (!nombre||!idServicio||!precio||!duracion||!descripcion) {
                 Swal.fire({
                     icon: "warning",
                     title: "Campos incompletos",
@@ -62,9 +69,13 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         const nombre = document.getElementById("Nombre").value.trim();
+        const idServicio = document.getElementById("IdServicio").value.trim();
+        const precio = document.getElementById("Precio").value.trim();
+        const duracion = document.getElementById("Duracion").value.trim();
+        const descripcion = document.getElementById("Descripcion").value.trim();
 
 
-        if (!nombre) {
+        if (!nombre || !idServicio || !precio || !duracion || !descripcion) {
             Swal.fire({
                 icon: "warning",
                 title: "Campos incompletos",

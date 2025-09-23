@@ -49,7 +49,7 @@ namespace BreakingGymWebDAL
             using (IDbConnection _conn = ComunBD.ObtenerConexion(ComunBD.TipoBD.SqlServer))
             {
                 _conn.Open();
-                SqlCommand _comando = new SqlCommand("MostrarMembresia", _conn as SqlConnection);
+                SqlCommand _comando = new SqlCommand("MostrarMembresiaNombre", _conn as SqlConnection);
                 _comando.CommandType = CommandType.StoredProcedure;
                 IDataReader _reader = _comando.ExecuteReader();
                 while (_reader.Read())
@@ -59,9 +59,10 @@ namespace BreakingGymWebDAL
                         Id = _reader.GetInt32(0),
                         Nombre = _reader.GetString(1),
                         IdServicio = _reader.GetInt32(2),
-                        Precio = _reader.GetInt32(3),
-                        Duracion = _reader.GetString(4),
-                        Descripcion = _reader.GetString(5)
+                        Nombre_Servicio = _reader.GetString(3),
+                        Precio = _reader.GetInt32(4),
+                        Duracion = _reader.GetString(5),
+                        Descripcion = _reader.GetString(6)
                     });
                 }
                 _conn.Close();
