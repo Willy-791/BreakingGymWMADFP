@@ -76,7 +76,9 @@
     </div>
 </div>
 
-@section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="~/js/Inscripcion.js"></script>
+@if (TempData["ExitoModificar"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ExitoModificar"]
+    </div>
 }

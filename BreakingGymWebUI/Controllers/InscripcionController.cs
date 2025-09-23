@@ -63,26 +63,30 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
-                var listaInscripcion = EstadoBL.MostrarEstado();
+                var listaInscripcion = InscripcionBL.MostrarInscripcion();
                 bool existe = listaInscripcion.Any(e =>
-                    e.Nombre.ToLower().Trim() == inscripcionEN.IdUsuario.ToString().Trim()
+                    e.IdUsuario.ToString().Trim() == inscripcionEN.IdUsuario.ToString().Trim()
                     && e.Id != inscripcionEN.Id); //  evitar que choque con su propio nombre
 
                 if (existe)
                 {
-                    TempData["ErrorDuplicado"] = "El estado que intentas modificar ya existe.";
+                    TempData["ErrorDuplicado"] = "Este usuario  inscripcion ya tiene una inscripcion.";
                     return RedirectToAction(nameof(MostrarInscripcion));
                 }
+               
 
                 InscripcionBL.ModificarInscripcion(inscripcionEN);
-                TempData["ExitoModificar"] = "Inscripcion modificada correctamente.";
                 var usuarioBL = UsuarioBL.MostrarUsuario();
                 ViewBag.Usuarios = new SelectList(usuarioBL, "Id", "Nombre", inscripcionEN.IdUsuario);
                 var membresiaBL = MembresiaBL.MostrarMembresia();
                 ViewBag.Membresias = new SelectList(membresiaBL, "Id", "Nombre", inscripcionEN.IdMembresia);
                 var estadoBL = EstadoBL.MostrarEstado();
                 ViewBag.Estados = new SelectList(estadoBL, "Id", "Nombre", inscripcionEN.IdEstado);
+
+                TempData["ExitoModificar"] = "Inscripcion modificada correctamente.";
                 return RedirectToAction(nameof(MostrarInscripcion));
+
+
             }
 
             return View(inscripcionEN);
