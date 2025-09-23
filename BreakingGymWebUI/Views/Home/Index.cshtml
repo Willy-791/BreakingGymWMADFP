@@ -2,7 +2,272 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<div class="hero-container">
+    <div class="background-overlay"></div>
+    
+    <h1 class="welcome-title">
+         <span class="word">Welcome to</span>
+        <span class="word">Breaking</span>
+        <span class="word gym-word">GYM</span>
+    </h1>
+    
+    <p class="welcome-text">
+        <span class="typing-loop">Transforma tu cuerpo, entrena hoy</span>
+    </p>
 </div>
+
+<style>
+
+
+
+
+* {
+    margin: 0;                
+    padding: 0;                
+    box-sizing: border-box;     
+}
+
+
+:root {
+   
+    --primary-color: #ff6b35;      
+    --secondary-color: #f7931e;   
+    --accent-color: #00d4ff;      
+    --text-light: #ffffff;         
+    
+  
+    --shadow-dark: rgba(0, 0, 0, 0.8);        
+    --glow-primary: rgba(255, 107, 53, 0.6);  
+    --glow-accent: rgba(0, 212, 255, 0.4);    
+}
+
+
+body {
+    
+    background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4)), 
+                url('/FT_DeSobreNosotros/White.jpg') no-repeat center center fixed;
+    background-size: cover;         
+    font-family: 'Rajdhani', sans-serif;  
+    min-height: 100vh;             
+    overflow-x: hidden;           
+
+
+
+.hero-container {
+    position: relative;            
+    height: 100vh;                
+    display: flex;                 
+    flex-direction: column;        
+    justify-content: center;       
+    align-items: center;           
+    text-align: center;            
+    z-index: 1;                   
+}
+
+
+.background-overlay {
+    position: absolute;           /
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    background: linear-gradient(
+        45deg,                    
+        transparent 30%,           
+        rgba(255, 107, 53, 0.1) 50%,  
+        transparent 70%            
+    );
+    animation: overlayShift 8s ease-in-out infinite;  /* Animación infinita de 8 segundos */
+    z-index: -1;                   /* Por debajo del contenido */
+}
+
+
+.welcome-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);  
+    font-weight: 900;              
+    color: var(--text-light);      
+    margin-bottom: 20px;          
+    font-family: 'Orbitron', monospace;  
+    letter-spacing: 4px;           
+    text-transform: uppercase;     
+    animation: titleEntry 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);  
+    line-height: 1.1;             
+}
+
+
+.word {
+    display: inline-block;        
+    margin-right: 15px;           
+    animation: wordGlow 3s ease-in-out infinite alternate;  
+}
+
+.gym-word {
+    color: var(--primary-color);   
+    text-shadow: 
+        0 0 10px var(--glow-primary),   
+        0 0 20px var(--glow-primary),   
+        0 0 40px var(--glow-primary);   
+    animation-delay: 0.5s;         
+    
+   
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    background-size: 200% 200%;   
+    -webkit-background-clip: text; 
+    background-clip: text;        
+    -webkit-text-fill-color: transparent; 
+    
+   
+    animation: wordGlow 3s ease-in-out infinite alternate, gradientShift 4s ease-in-out infinite;
+}
+
+
+.welcome-text {
+    font-size: clamp(1rem, 3vw, 1.5rem);  
+    color: var(--text-light);      
+    margin-bottom: 60px;           
+    font-family: 'Exo 2', sans-serif;  
+    font-weight: 300;             
+    line-height: 1.6;             
+    letter-spacing: 2px;           
+    text-transform: uppercase;     
+    opacity: 0;                    
+    animation: textFadeIn 2s ease-out 1s forwards; 
+    max-width: 600px;              
+    text-shadow: 2px 2px 8px var(--shadow-dark);  
+    position: relative;           
+}
+
+
+.typing-loop {
+    display: inline-block;         
+    white-space: nowrap;           
+    overflow: hidden;              
+    width: 0;                    
+    border-right: 2px solid var(--accent-color);  
+    
+   
+    animation: 
+        typewriter-full 3s steps(37, end) 1.5s forwards,      
+        blink-caret 0.75s step-end infinite,                  
+        typing-loop-cycle 10s 1.5s infinite;                
+}
+
+
+.welcome-text::before {
+    content: '';                  
+    position: absolute;           
+    bottom: -5px;                  
+    left: 50%;                     
+    transform: translateX(-50%);   
+    width: 0;                      
+    height: 2px;                  
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); 
+    animation: underlineGrow 1.5s ease-out 4.5s forwards;  
+}
+
+
+@@keyframes titleEntry {
+    0% {
+        transform: translateY(-100px) scale(0.5);  
+        opacity: 0;                                
+    }
+    100% {
+        transform: translateY(0) scale(1);         
+        opacity: 1;                               
+    }
+}
+
+@@keyframes wordGlow {
+    0% {
+        text-shadow: 
+            0 0 5px rgba(255, 255, 255, 0.5),    
+            0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.8),    
+            0 0 20px rgba(255, 255, 255, 0.5),
+            0 0 30px rgba(255, 107, 53, 0.3);
+    }
+}
+
+
+@@keyframes textFadeIn {
+    from {
+        opacity: 0;                   
+        transform: translateY(30px);  
+    }
+    to {
+        opacity: 1;                    
+        transform: translateY(0);      
+    }
+}
+
+@@keyframes gradientShift {
+    0% { background-position: 0% 50%; }    
+    50% { background-position: 100% 50%; } 
+    100% { background-position: 0% 50%; }  
+}
+
+
+@@keyframes underlineGrow {
+    from { width: 0; }        
+    to { width: 150px; }      
+}
+
+
+@@keyframes typewriter-full {
+    from { width: 0; }        
+    to { width: 37ch; }        
+}
+
+
+@@keyframes typing-loop-cycle {
+    0% { width: 37ch; }       
+    10% { width: 37ch; }      
+    40% { width: 0; }          
+    50% { width: 0; }          
+    80% { width: 37ch; }       
+    100% { width: 37ch; }      
+}
+
+
+@@keyframes blink-caret {
+    from, to { border-color: transparent; }     
+    50% { border-color: var(--accent-color); }   
+}
+
+
+@@keyframes overlayShift {
+    0%, 100% { transform: translateX(-100%); }   
+    50% { transform: translateX(100%); }         
+}
+
+
+@@media (max-width: 768px) {
+    .welcome-title {
+        margin-top: 20px;         
+    }
+}
+
+
+@@supports (backdrop-filter: blur(10px)) {
+    .hero-container::before {
+        content: '';               
+        position: absolute;        
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        backdrop-filter: blur(1px); 
+        z-index: -1;               
+    }
+}
+
+
+</style>
