@@ -36,6 +36,15 @@ namespace BreakingGymWebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                //  Validar si ya existe un estado con el mismo nombre
+                var listaU = UsuarioBL.MostrarUsuario();
+                bool existeC = listaU.Any(u => u.Cuenta.ToLower().Trim() == pusuarioEN.Cuenta.ToLower().Trim());
+                bool existeN = listaU.Any(u => u.Celular.ToLower().Trim() == pusuarioEN.Celular.ToLower().Trim());
+                if (existeC || existeN) 
+                {
+                    TempData["ErrorDuplicado"] = "El usuario que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(GuardarUsuario));
+                }
                 UsuarioBL.GuardarUsuario(pusuarioEN);
                 TempData["MensajeExito"] = "¡Usuario registrado correctamente!";
             }
@@ -62,6 +71,16 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
+                var listaU = UsuarioBL.MostrarUsuario();
+                bool existe = listaU.Any(u =>u.Cuenta.ToLower().Trim() == pusuarioEN.Cuenta.ToLower().Trim()
+                && u.Id != pusuarioEN.Id); // evitar que choque con su propio nombre
+
+                bool existeN = listaU.Any(u => u.Celular.ToLower().Trim() == pusuarioEN.Celular.ToLower().Trim());
+                if (existe || existeN)
+                {
+                    TempData["ErrorDuplicado"] = "Algunos datos que intentas guardar ya existen.";
+                    return RedirectToAction(nameof(ModificarUsuario));
+                }
                 UsuarioBL.ModificarUsuario(pusuarioEN);
                 return RedirectToAction(nameof(MostrarUsuario));
             }
