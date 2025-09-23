@@ -8,7 +8,7 @@ namespace BreakingGymWebEN
 {
     public class InscripcionEN
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public int IdUsuario { get; set; }
      public string Nombre_Usuario { get; set; } = string.Empty;
         public string Apellido_Usuario { get; set; } = string.Empty;

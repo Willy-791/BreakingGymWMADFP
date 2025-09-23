@@ -1,0 +1,70 @@
+﻿@model BreakingGymWebEN.InscripcionEN
+
+@{
+    ViewData["Title"] = "ModificarInscripcion";
+    Layout = "~/Views/Shared/Ladmin.cshtml";
+}
+
+<h1>ModificarMembresia</h1>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-warning text-white text-center">
+                    <h4><i class="bi bi-pencil-square"></i>Modificar Membresia</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="ModificarInscripcion" method="post" id="ModificarEscripcionForm">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="IdUsuario" class="form-label fw-bold">Usuario</label>
+                            <select asp-for="IdUsuario" class="form-select" asp-items="ViewBag.Usuarios">
+                                <option value="">-- Seleccione un Usuario --</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="IdMembresia" class="form-label fw-bold">Servicio</label>
+                            <select asp-for="IdMembresia" class="form-select" asp-items="ViewBag.Membresias">
+                                <option value="">-- Seleccione una Membresia --</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-">
+                            <label asp-for="IdEstado" class="form-label fw-bold">Servicio</label>
+                            <select asp-for="IdEstado" class="form-select" asp-items="ViewBag.Estados">
+                                <option value="">-- Seleccione una Estado --</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="FechaInscripcion" class="form-label fw-bold"></label>
+                            <input asp-for="FechaInscripcion" type="date" class="form-control" />
+                            <span asp-validation-for="FechaInscripcion" class="text-danger"></span>
+                        </div>
+
+                        <!-- Fecha de Fin -->
+                        <div class="mb-3">
+                            <label asp-for="FechaVencimiento" class="form-label fw-bold"></label>
+                            <input asp-for="FechaVencimiento" type="date" class="form-control" />
+                            <span asp-validation-for="FechaVencimiento" class="text-danger"></span>
+                        </div>
+                        <div clas="d-flex justify-content-between">
+                            <button type="submit" class="btn btn warning">
+                                <i class="bi bi-check-circle"></i>Modificar
+                            </button>
+                            <a asp-action="MostrarInscripcion" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/Membresia.js"></script>
+}
+
