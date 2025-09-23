@@ -1,4 +1,5 @@
-﻿using BreakingGymWebEN;
+﻿using BreakingGymWebBL;
+using BreakingGymWebEN;
 using BreakinGymWebBL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,7 +18,7 @@ namespace BreakingGymWebUI.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            
+
             var servicioBL = new ServicioBL();
             var lista = ServicioBL.MostrarServicio();
 
@@ -27,7 +28,7 @@ namespace BreakingGymWebUI.Controllers
 
             return View("Index", lista);
         }
-        public IActionResult MostrarSU() 
+        public IActionResult MostrarSU()
         {
 
             var servicioBL = new ServicioBL();
@@ -74,6 +75,16 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
+
+                //  Validar si ya existe un estado con el mismo nombre
+                var listaServicio = ServicioBL.MostrarServicio();
+                bool existe = listaServicio.Any(s => s.Nombre.ToLower().Trim() == servicioEN.Nombre.ToLower().Trim());
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El servicio que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
                 ServicioBL.GuardarServicio(servicioEN);
                 TempData["ExitoGuardar"] = "Servicio guardado correctamente.";
                 return RedirectToAction(nameof(Index));
@@ -95,7 +106,7 @@ namespace BreakingGymWebUI.Controllers
         // POST: Tarea/ModificarTarea/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ModificarServicio(ServicioEN servicoEN)
+        public IActionResult ModificarServicio(ServicioEN servicioEN)
         {
             Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
             Response.Headers["Pragma"] = "no-cache";
@@ -103,11 +114,20 @@ namespace BreakingGymWebUI.Controllers
 
             if (ModelState.IsValid)
             {
-                ServicioBL.ModificarServicio(servicoEN);
+                //  Validar si ya existe un estado con el mismo nombre
+                var listaServicio = ServicioBL.MostrarServicio();
+                bool existe = listaServicio.Any(s => s.Nombre.ToLower().Trim() == servicioEN.Nombre.ToLower().Trim());
+
+                if (existe)
+                {
+                    TempData["ErrorDuplicado"] = "El servicio que intentas guardar ya existe.";
+                    return RedirectToAction(nameof(Index));
+                }
+                ServicioBL.ModificarServicio(servicioEN);
                 TempData["ExitoModificar"] = "Servicio modificado correctamente.";
                 return RedirectToAction(nameof(Index));
             }
-            return View(servicoEN);
+            return View(servicioEN);
         }
         [HttpGet]
         public IActionResult EliminarServicio(int Id)
