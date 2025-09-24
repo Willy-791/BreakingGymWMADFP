@@ -70,7 +70,7 @@ namespace BreakingGymWebUI.Controllers
 
                 if (existe)
                 {
-                    TempData["ErrorDuplicado"] = "Este usuario  inscripcion ya tiene una inscripcion.";
+                    TempData["ErrorDuplicado"] = "Este usuario  ya tiene una inscripcion.";
                     return RedirectToAction(nameof(MostrarInscripcion));
                 }
                

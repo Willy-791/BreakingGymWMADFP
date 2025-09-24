@@ -87,6 +87,8 @@ namespace BreakingGymWeb.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
+            var servicio = ServicioBL.MostrarServicio();
+            ViewBag.Servicios = new SelectList(servicio, "Id", "Nombre");
             return View("GuardarMembresia");
         }
         //POST: Guardar Membresia
@@ -122,6 +124,8 @@ namespace BreakingGymWeb.Controllers
                 TempData["CamposVacios"] = "¡Debe completar todos los campos!. Vuelva a intentarlo";
 
             }
+            var servicio = ServicioBL.MostrarServicio();
+            ViewBag.Servicios = new SelectList(servicio, "Id", "Nombre", pmembresiaEN.IdServicio);
             return View(pmembresiaEN);
         }
         public IActionResult ModificarMembresia(int id)

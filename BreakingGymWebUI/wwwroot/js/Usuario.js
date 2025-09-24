@@ -9,7 +9,7 @@
             const apellido = document.getElementById("Apellido").value.trim();
             const celular = document.getElementById("Celular").value.trim();
             const cuenta = document.getElementById("Cuenta").value.trim();
-            const contraseña = document.getElementById("Contraseña").value.trim();
+            const contraseña = document.getElementById("Contrasenia").value.trim();
 
             if (!nombre || !apellido || !celular || !cuenta || !contraseña) {
                 Swal.fire({
