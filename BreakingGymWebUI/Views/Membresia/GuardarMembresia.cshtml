@@ -17,7 +17,11 @@
                             <input asp-for="Nombre" class="form-control" id="Nombre" placeholder="Nombre de membresía" required />
                         </div>
                         <div class="mb-3">
-                            <input asp-for="IdServicio" class="form-control" id="IdServicio" placeholder="ID de Servicio" required />
+                            <label asp-for="IdServicio" class="form-label fw-bold">Servicio</label>
+                            <select asp-for="IdServicio" class="form-select" asp-items="ViewBag.Membresias">
+                                <option value="">-- Seleccione un servicio --</option>
+                            </select>
+
                         </div>
                         <div class="mb-3">
                             <input asp-for="Precio" class="form-control" id="Precio" placeholder="Precio de membresía" required />

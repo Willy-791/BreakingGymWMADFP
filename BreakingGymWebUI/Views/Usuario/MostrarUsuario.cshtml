@@ -99,6 +99,16 @@
                             });
                         </text>
         }
+         @if (TempData["ErrorEliminar"] != null)
+        {
+                            <text>
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Error",
+                                              text: "@Html.Raw(TempData["ErrorEliminar"])"
+                                });
+                            </text>
+        }
 
         @* Errores (ejemplo duplicado) *@
         @if (TempData["ErrorDuplicadoModificado"] != null)

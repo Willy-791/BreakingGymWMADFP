@@ -91,25 +91,38 @@ namespace BreakingGymWebUI.Controllers
             return View("ModificarUsuario", pusuarioEN);
         }
 
-        // GET: Usuarios/EliminarUsuario/5
-        public IActionResult EliminarUsuario(int id)
+        [HttpGet]
+        public IActionResult EliminarUsuario(int Id)
         {
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
             if (HttpContext.Session.GetInt32("IdUsuario") == null)
             {
                 return RedirectToAction("Login", "Login");
             }
-            var usuario = UsuarioBL.MostrarUsuario().FirstOrDefault(u => u.Id == id);
-            if (usuario == null) return NotFound();
-            return View("EliminarUsuario", usuario); // Vista: EliminarUsuario.cshtml
-        }
 
-        // POST: Usuarios/EliminarUsuario/5
+            var usuario = UsuarioBL.MostrarUsuario().FirstOrDefault(u => u.Id == Id);
+
+            if (usuario == null) return NotFound();
+            return View(usuario); 
+        }
         [HttpPost, ActionName("EliminarUsuario")]
-        [ValidateAntiForgeryToken]
-        public IActionResult EliminarUsuarioConfirmado(int id)
+        public IActionResult EliminarUsuarioConfirmado(int Id)
         {
-      
-            EstadoBL.EliminarEstado(id);
+            Response.Headers["Cache-Control"] = "no-store, no-cache, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+            var idUsuarioLogueado = HttpContext.Session.GetInt32("IdUsuario");
+
+            // ✅ Validar si intenta eliminarse a sí mismo
+            if (idUsuarioLogueado != null && Id == idUsuarioLogueado)
+            {
+                TempData["ErrorEliminar"] = "No puedes eliminar el usuario con el que has iniciado sesión.";
+                return RedirectToAction(nameof(MostrarUsuario));
+            }
+
+            UsuarioBL.EliminarUsuario(Id);
             TempData["ExitoEliminar"] = "Usuario eliminado correctamente.";
             return RedirectToAction(nameof(MostrarUsuario));
         }

@@ -219,6 +219,7 @@ namespace BreakingGymWeb.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
+
             MembresiaBL.EliminarMembresia(Id);
             TempData["ExitoEliminar"] = "Membresía eliminada correctamente.";
             return RedirectToAction(nameof(MostrarMembresia));
@@ -270,15 +271,18 @@ namespace BreakingGymWeb.Controllers
             Response.Headers["Pragma"] = "no-cache";
             Response.Headers["Expires"] = "0";
 
-            if (!ModelState.IsValid)
+            var listaUsuario = InscripcionBL.MostrarInscripcion();
+            bool existe = listaUsuario.Any(s => s.IdUsuario.ToString().Trim() == inscripcionEN.IdUsuario.ToString().Trim());
+
+            if (existe)
             {
-                TempData["Error"] = "Error al procesar la inscripción.";
-                return RedirectToAction("MostrarMembresiaU");
+                TempData["YaTieneSolicitud"] = "Ya tienes una solicitud de membresia realizada,ponte en contacto con nosotros .";
+                return RedirectToAction(nameof(MostrarMembresiaU));
             }
 
             InscripcionBL.GuardarInscripcion(inscripcionEN);
             TempData["Mensaje"] = "¡Inscripción realizada con éxito!";
-            return RedirectToAction("MostrarMembresiaU");
+            return RedirectToAction(nameof(MostrarMembresiaU));
         }
     }
 }

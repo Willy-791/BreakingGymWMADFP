@@ -114,7 +114,7 @@ namespace BreakingGymWebUI.Controllers
             Response.Headers["Expires"] = "0";
 
             InscripcionBL.EliminarInscripcion(Id);
-            TempData["ExitoEliminar"] = "Estado eliminado correctamente.";
+            TempData["ExitoEliminar"] = "Inscripcion eliminada correctamente.";
             return RedirectToAction(nameof(MostrarInscripcion));
         }
 
