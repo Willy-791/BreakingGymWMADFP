@@ -8967,9 +8967,9 @@ textarea.form-control-lg {
 }
 
 .bg-dark {
-    --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+    background-color: #00b3bd !important;
 }
+
 
 .bg-black {
     --bs-bg-opacity: 1;
@@ -12455,6 +12455,7 @@ body {
         transition: transform 0.15s ease-in-out;
         z-index: 1038;
         transform: translateX(-225px);
+        background-color: #00838a;
     }
 
     #layoutSidenav #layoutSidenav_content {
@@ -12568,7 +12569,7 @@ body {
     }
 
     .sb-topnav.navbar-dark #sidebarToggle {
-        color: rgba(255, 255, 255, 0.5);
+        color: #003344;
     }
 
     .sb-topnav.navbar-light #sidebarToggle {
@@ -12631,16 +12632,16 @@ body {
     }
 
 .sb-sidenav-dark {
-    background-color: #212529;
-    color: rgba(255, 255, 255, 0.5);
+    background-color: #009ba4;
+    color: #474040;
 }
 
     .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-        color: rgba(255, 255, 255, 0.25);
+        color: #474040; /*color de las diviciones del menu lateral*/
     }
 
     .sb-sidenav-dark .sb-sidenav-menu .nav-link {
-        color: rgba(255, 255, 255, 0.5);
+        color: white; /*color de letras en el menu lateral*/
     }
 
         .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
@@ -12664,7 +12665,7 @@ body {
             }
 
     .sb-sidenav-dark .sb-sidenav-footer {
-        background-color: #343a40;
+        background-color: #00b3bd;
     }
 
 .sb-sidenav-light {
@@ -12673,7 +12674,7 @@ body {
 }
 
     .sb-sidenav-light .sb-sidenav-menu .sb-sidenav-menu-heading {
-        color: #adb5bd;
+        color:darkgrey;
     }
 
     .sb-sidenav-light .sb-sidenav-menu .nav-link {

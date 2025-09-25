@@ -18,7 +18,7 @@
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="@Url.Action("Index", "InicioAdministrador")"> Breaking GYM</a>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars style="color: #bd6900;"></i></button>
         <!-- Navbar Search-->
         @*  <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
@@ -32,7 +32,8 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
-                        <a class="dropdown-item" href="@Url.Action("Logout", "Login")">Cerrar Sesión</a></li>
+                        <a class="dropdown-item" href="@Url.Action("Logout", "Login")">Cerrar Sesión</a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -43,44 +44,44 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Resumen</div>
-                           <a class="nav-link" href="@Url.Action("Index", "InicioAdministrador")">
-                             <div class="sb-nav-link-icon"><i class="fa-solid fa-house" style="color: #f08119;"></i></div>
-                                 Inicio
-                             </a>
-                          <a class="nav-link" href="@Url.Action("SobreNosotrosA", "Home")">
-                      <div class="sb-nav-link-icon"><i class="fas fa-info-circle" style="color: #f08119;"></i></div>
-                    Sobre Nosotros
-                   </a>
-                <div class="sb-sidenav-menu-heading">Breaking GYM</div>
-  
-             <a class="nav-link" href="@Url.Action("MostrarMembresia", "Membresia")">
-         <div class="sb-nav-link-icon"><i class="fa-solid fa-money-check-dollar" style="color: #f08119;"></i></div>
-       Membresías
-    </a>
-    <a class="nav-link" href="@Url.Action("Index", "Estado")">
-        <div class="sb-nav-link-icon"><i class="fa-solid fa-toggle-off" style="color: #f08119;"></i></div>
-        Estados
-    </a>
-    <a class="nav-link" href="@Url.Action("Index", "Rol")">
-        <div class="sb-nav-link-icon"><i class="fa-solid fa-address-book" style="color: #f08119;"></i></div>
-        Roles
-    </a>
-    <a class="nav-link" href="@Url.Action("Index", "Servicio")">
-        <div class="sb-nav-link-icon"><i class="fa-solid fa-hand-holding-hand" style="color: #f08119;"></i></div>
-        Servicios
-    </a>
-    <a class="nav-link" href="@Url.Action("MostrarUsuario", "Usuario")">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-user" style="color: #f08119;"></i></div>
-        Usuarios
-    </a>
-    <a class="nav-link" href="@Url.Action("MostrarInscripcion", "Inscripcion")">
-        <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-user" style="color: #f08119;"></i></div>
-                Inscripcion
-    </a>
-</div>
+                        <a class="nav-link" href="@Url.Action("Index", "InicioAdministrador")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-house" style="color: #bd6900;"></i></div>
+                            Inicio
+                        </a>
+                        <a class="nav-link" href="@Url.Action("SobreNosotrosA", "Home")">
+                            <div class="sb-nav-link-icon"><i class="fas fa-info-circle" style="color: #bd6900;"></i></div>
+                            Sobre Nosotros
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Breaking GYM</div>
+
+                        <a class="nav-link" href="@Url.Action("MostrarMembresia", "Membresia")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-money-check-dollar" style="color: #bd6900;"></i></div>
+                            Membresías
+                        </a>
+                        <a class="nav-link" href="@Url.Action("Index", "Estado")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-toggle-off" style="color: #bd6900;"></i></div>
+                            Estados
+                        </a>
+                        <a class="nav-link" href="@Url.Action("Index", "Rol")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-address-book" style="color: #bd6900;"></i></div>
+                            Roles
+                        </a>
+                        <a class="nav-link" href="@Url.Action("Index", "Servicio")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-hand-holding-hand" style="color: #bd6900;"></i></div>
+                            Servicios
+                        </a>
+                        <a class="nav-link" href="@Url.Action("MostrarUsuario", "Usuario")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-user" style="color: #bd6900;"></i></div>
+                            Usuarios
+                        </a>
+                        <a class="nav-link" href="@Url.Action("MostrarInscripcion", "Inscripcion")">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-user" style="color: #bd6900;"></i></div>
+                            Inscripcion
+                        </a>
+                    </div>
 
                 </div>
-         
+
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
                     Breaking GYM
