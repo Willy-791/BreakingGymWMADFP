@@ -3,6 +3,80 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/Ladmin.cshtml";
 }
+ <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
-<h1>Inicio admin </h1>
+<section class="home" id="home">  
+    <div class="home-content">  
+        <h2>Bienvenido al sistema Administrativo de Breaking GYM</h2>  
+        <p>Este sistema ha sido diseñado para mejorar la organización y administración de usuarios, manteniendo el orden del Gimnasio de manera eficiente.</p>  
+    </div>  
+</section>  
 
+<style>  
+    body {
+        margin: 0;
+      
+        background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(20,20,20,0.8)), 
+                    url('/FT_DeSobreNosotros/muscular.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .home {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .home-content h2 {
+     font-size: 4rem;
+     font-family: Lobster;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    animation: zoomIn 1.5s ease forwards;
+
+    /* Degradado lava */
+   background: linear-gradient(90deg, #fff7b3, #ffe680, #f5d67b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Sombra luminosa suave */
+    text-shadow: 0 0 8px rgba(255, 245, 180, 0.5),
+                 0 0 15px rgba(245, 214, 123, 0.4),
+                 0 0 25px rgba(230, 200, 100, 0.3);
+    }
+
+    .home-content p {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        color: #e6fdf8;
+        animation: slideUp 2s ease forwards;
+        opacity: 0;
+    }
+
+    /* Animaciones */
+    @@keyframes zoomIn {
+        0% {
+            transform: scale(0.7);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes slideUp {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
