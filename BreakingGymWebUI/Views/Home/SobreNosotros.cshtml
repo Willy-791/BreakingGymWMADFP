@@ -132,7 +132,21 @@ body {
         opacity: 1; /* Completamente visible */
     }
 }
+.container1 {
+        animation: titleEntry 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
+    @@keyframes titleEntry {
+        0% {
+            transform: translateY(-100px) scale(0.5); /* Viene desde arriba, pequeño */
+            opacity: 0; /* Transparente */
+        }
+
+        100% {
+            transform: translateY(0) scale(1); /* Posición normal, tamaño normal */
+            opacity: 1; /* Completamente visible */
+        }
+    }
 
 
 
@@ -149,7 +163,7 @@ body {
 }
 
 /* Tarjeta */
-.card {
+.card1 {
     background-color: #fff;
     border-radius: 0.5rem;
     overflow: hidden;
@@ -157,7 +171,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-.card:hover {
+.card1:hover {
         transform: scale(1.05);
         border-radius: 2px solid #00ffff;
 }
