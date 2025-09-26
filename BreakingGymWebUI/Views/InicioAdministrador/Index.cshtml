@@ -3,11 +3,13 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/Ladmin.cshtml";
 }
- <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <section class="home" id="home">  
     <div class="home-content">  
-        <h2>Bienvenido al sistema Administrativo de Breaking GYM</h2>  
+        <h1>Bienvenido al sistema Administrativo de Breaking GYM</h1>  
         <p>Este sistema ha sido diseñado para mejorar la organización y administración de usuarios, manteniendo el orden del Gimnasio de manera eficiente.</p>  
     </div>  
 </section>  
@@ -31,14 +33,13 @@
         flex-direction: column;
     }
 
-    .home-content h2 {
+    .home-content h1 {
      font-size: 4rem;
-     font-family: Lobster;
+     font-family: 'Orbitron', monospace; 
     font-weight: 700;
     margin-bottom: 1.5rem;
     animation: zoomIn 1.5s ease forwards;
 
-    /* Degradado lava */
    background: linear-gradient(90deg, #fff7b3, #ffe680, #f5d67b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

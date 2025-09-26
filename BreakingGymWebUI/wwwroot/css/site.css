@@ -8967,7 +8967,7 @@ textarea.form-control-lg {
 }
 
 .bg-dark {
-    background-color: #00b3bd !important;
+    background-color: #18a8ae !important;
 }
 
 
@@ -12455,7 +12455,7 @@ body {
         transition: transform 0.15s ease-in-out;
         z-index: 1038;
         transform: translateX(-225px);
-        background-color: #00838a;
+        background-color: #0c475b;
     }
 
     #layoutSidenav #layoutSidenav_content {
@@ -12632,7 +12632,7 @@ body {
     }
 
 .sb-sidenav-dark {
-    background-color: #009ba4;
+    background-color: #0a5256;
     color: #474040;
 }
 
@@ -12642,6 +12642,10 @@ body {
 
     .sb-sidenav-dark .sb-sidenav-menu .nav-link {
         color: white; /*color de letras en el menu lateral*/
+    }
+    .sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+        color: black !important; /*color de letras en el menu lateral*/
+        background-color: darkgray;
     }
 
         .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
@@ -12665,7 +12669,7 @@ body {
             }
 
     .sb-sidenav-dark .sb-sidenav-footer {
-        background-color: #00b3bd;
+        background-color: #0a5256;
     }
 
 .sb-sidenav-light {
@@ -12686,11 +12690,14 @@ body {
         }
 
         .sb-sidenav-light .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
-            color: #adb5bd;
+            color: #05080c;
+            background-color: #57caaa;
+           
         }
 
         .sb-sidenav-light .sb-sidenav-menu .nav-link:hover {
             color: #0d6efd;
+
         }
 
         .sb-sidenav-light .sb-sidenav-menu .nav-link.active {
