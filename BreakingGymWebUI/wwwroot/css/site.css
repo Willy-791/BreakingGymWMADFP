@@ -107,6 +107,12 @@ body {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+.TC 
+{
+    background-color: #ff03d6;
+}
+
+
 
 hr {
     margin: 1rem 0;
