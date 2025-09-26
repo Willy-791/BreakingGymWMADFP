@@ -2016,6 +2016,9 @@ progress {
     vertical-align: top;
     border-color: var(--bs-table-border-color);
 }
+.tN{
+    color: white !important;
+ }
 
     .table > :not(caption) > * > *, .datatable-table > :not(caption) > * > * {
         padding: 0.5rem 0.5rem;
@@ -12643,7 +12646,7 @@ body {
 }
 
     .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-        color: #474040; /*color de las diviciones del menu lateral*/
+        color: #fbe191; /*color de las diviciones del menu lateral*/
     }
 
     .sb-sidenav-dark .sb-sidenav-menu .nav-link {
