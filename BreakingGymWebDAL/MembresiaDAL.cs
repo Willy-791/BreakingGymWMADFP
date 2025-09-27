@@ -33,7 +33,7 @@ namespace BreakingGymWebDAL
                         IdServicio = _reader.GetInt32(1),
                         Nombre = _reader.GetString(2),
                         Duracion = _reader.GetString(3),
-                        Precio = _reader.GetInt32(4),
+                        Precio = _reader.GetString(4),
                         Descripcion = _reader.GetString(5)
                     };
                 }
@@ -60,7 +60,7 @@ namespace BreakingGymWebDAL
                         Nombre = _reader.GetString(1),
                         IdServicio = _reader.GetInt32(2),
                         Nombre_Servicio = _reader.GetString(3),
-                        Precio = _reader.GetInt32(4),
+                        Precio = _reader.GetString(4),
                         Duracion = _reader.GetString(5),
                         Descripcion = _reader.GetString(6)
                     });
@@ -86,7 +86,7 @@ namespace BreakingGymWebDAL
                         Id = _reader.GetInt32(0),
                         Nombre = _reader.GetString(1),
                         IdServicio = _reader.GetInt32(2),
-                        Precio = _reader.GetInt32(3),
+                        Precio = _reader.GetString(3),
                         Duracion = _reader.GetString(4),
                         Descripcion = _reader.GetString(5)
                     });

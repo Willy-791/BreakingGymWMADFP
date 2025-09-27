@@ -47,7 +47,7 @@ CREATE TABLE Membresia (
     Id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(30) NOT NULL,
     IdServicio INT NOT NULL FOREIGN KEY REFERENCES Servicio(Id) ON DELETE CASCADE,
-    Precio INT NOT NULL,
+    Precio VARCHAR(20) NOT NULL,
     Duracion VARCHAR(10) NOT NULL,
     Descripcion VARCHAR(MAX) NOT NULL
 );
@@ -155,12 +155,68 @@ BEGIN
       AND (@FechaVencimiento IS NULL OR FechaVencimiento = @FechaVencimiento);
 END;
 GO
+CREATE PROCEDURE MostrarInscripcionNombre
+    @IdUsuario INT = NULL,
+    @IdMembresia INT = NULL,
+    @IdEstado INT = NULL,
+    @FechaInscripcion DATE = NULL,
+    @FechaVencimiento DATE = NULL
+AS
+BEGIN
+    SELECT 
+        i.Id,
+		i.IdUsuario,
+        u.Nombre AS Nombre_Usuario,
+		u.Apellido AS Apellido_Usuario,
+		u.Celular,
+		i.IdMembresia,
+        m.Nombre AS Nombre_Membresia,
+		i.IdEstado,
+        e.Nombre AS Nombre_Estado,
+        i.FechaInscripcion,
+        i.FechaVencimiento
+    FROM Inscripcion i
+    INNER JOIN Usuario u ON i.IdUsuario = u.Id
+    INNER JOIN Membresia m ON i.IdMembresia = m.Id
+    INNER JOIN Estado e ON i.IdEstado = e.Id
+    WHERE (@IdUsuario IS NULL OR i.IdUsuario = @IdUsuario)
+      AND (@IdMembresia IS NULL OR i.IdMembresia = @IdMembresia)
+      AND (@IdEstado IS NULL OR i.IdEstado = @IdEstado)
+      AND (@FechaInscripcion IS NULL OR i.FechaInscripcion = @FechaInscripcion)
+      AND (@FechaVencimiento IS NULL OR i.FechaVencimiento = @FechaVencimiento);
+END;
+GO
+
+CREATE PROCEDURE BuscarInscripcionPorCelular
+    @Celular NVARCHAR(20)
+AS
+BEGIN
+    SELECT 
+        i.Id,
+		i.IdUsuario,
+        u.Nombre AS Nombre_Usuario,
+		u.Apellido AS Apellido_Usuario,
+        u.Celular,  -- 
+		i.IdMembresia,
+        m.Nombre AS Nombre_Membresia,
+		i.IdEstado,
+        e.Nombre AS Nombre_Estado,
+        i.FechaInscripcion,
+        i.FechaVencimiento
+    FROM Inscripcion i
+    INNER JOIN Usuario u ON i.IdUsuario = u.Id
+    INNER JOIN Membresia m ON i.IdMembresia = m.Id
+    INNER JOIN Estado e ON i.IdEstado = e.Id
+    WHERE u.Celular LIKE '%' + @Celular + '%'; 
+END;
+GO
+
 
 -- MEMBRESIA
 CREATE PROCEDURE GuardarMembresia
     @Nombre VARCHAR(30),
     @IdServicio INT,
-    @Precio INT,
+    @Precio VARCHAR(20),
     @Duracion VARCHAR(10),
     @Descripcion VARCHAR(MAX)
 AS
@@ -181,7 +237,7 @@ CREATE PROCEDURE ModificarMembresia
     @Id INT,
     @Nombre VARCHAR(30),
     @IdServicio INT,
-    @Precio INT,
+    @Precio VARCHAR(20),
     @Duracion VARCHAR(10),
     @Descripcion VARCHAR(MAX)
 AS
@@ -199,7 +255,7 @@ GO
 CREATE PROCEDURE MostrarMembresia
     @Nombre VARCHAR(30) = NULL,
     @IdServicio INT = NULL,
-    @Precio INT = NULL,
+    @Precio VARCHAR(20) = NULL,
     @Duracion VARCHAR(10) = NULL,
     @Descripcion VARCHAR(MAX) = NULL
 AS
@@ -208,9 +264,34 @@ BEGIN
     FROM Membresia
     WHERE (@Nombre IS NULL OR Nombre LIKE '%' + @Nombre + '%')
       AND (@IdServicio IS NULL OR IdServicio = @IdServicio)
-      AND (@Precio IS NULL OR Precio = @Precio)
+      AND (@Precio IS NULL OR Precio LIKE '%'+ @Precio + '%')
       AND (@Duracion IS NULL OR Duracion LIKE '%' + @Duracion + '%')
       AND (@Descripcion IS NULL OR Descripcion LIKE '%' + @Descripcion + '%');
+END;
+GO
+CREATE PROCEDURE MostrarMembresiaNombre
+    @Nombre VARCHAR(30) = NULL,
+    @IdServicio INT = NULL,
+    @Precio VARCHAR(20) = NULL,
+    @Duracion VARCHAR(10) = NULL,
+    @Descripcion VARCHAR(MAX) = NULL
+AS
+BEGIN
+    SELECT 
+        m.Id,
+        m.Nombre,
+		m.IdServicio,
+        s.Nombre AS Nombre_Servicio,
+        m.Precio,
+        m.Duracion,
+        m.Descripcion
+    FROM Membresia m
+    INNER JOIN Servicio s ON m.IdServicio = s.Id
+    WHERE (@Nombre IS NULL OR m.Nombre LIKE '%' + @Nombre + '%')
+      AND (@IdServicio IS NULL OR m.IdServicio = @IdServicio)
+      AND (@Precio IS NULL OR m.Precio LIKE '%' + @Precio +'%')
+      AND (@Duracion IS NULL OR m.Duracion LIKE '%' + @Duracion + '%')
+      AND (@Descripcion IS NULL OR m.Descripcion LIKE '%' + @Descripcion + '%');
 END;
 GO
 
@@ -355,6 +436,34 @@ BEGIN
       AND (@Contrasenia IS NULL OR Contrasenia LIKE '%' + @Contrasenia + '%');
 END;
 GO
+CREATE PROCEDURE MostrarUsuarioNombre
+    @IdRol INT = NULL,
+    @Nombre VARCHAR(50) = NULL,
+    @Apellido VARCHAR(50) = NULL,
+    @Celular VARCHAR(9) = NULL,
+    @Cuenta VARCHAR(50) = NULL,
+    @Contrasenia VARCHAR(20) = NULL
+AS
+BEGIN
+    SELECT 
+        u.Id,
+		u.IdRol,
+        r.Nombre AS Nombre_Rol,
+        u.Nombre,
+        u.Apellido,
+        u.Celular,
+        u.Cuenta,
+        u.Contrasenia
+    FROM Usuario u
+    INNER JOIN Rol r ON u.IdRol = r.Id
+    WHERE (@IdRol IS NULL OR u.IdRol = @IdRol)
+      AND (@Nombre IS NULL OR u.Nombre LIKE '%' + @Nombre + '%')
+      AND (@Apellido IS NULL OR u.Apellido LIKE '%' + @Apellido + '%')
+      AND (@Celular IS NULL OR u.Celular LIKE '%' + @Celular + '%')
+      AND (@Cuenta IS NULL OR u.Cuenta LIKE '%' + @Cuenta + '%')
+      AND (@Contrasenia IS NULL OR u.Contrasenia LIKE '%' + @Contrasenia + '%');
+END;
+GO
 
 CREATE PROCEDURE VerificarUsuarioLogin @IdRol INT, @Cuenta VARCHAR(50), @Contrasenia VARCHAR(20)
 AS
@@ -447,4 +556,5 @@ EXEC GuardarEstado 'Inactivo';
 EXEC GuardarEstado 'Pendiente';
 GO
 EXEC GuardarServicio Baño, Baños
-EXEC GuardarMembresia Oro,1,30,30,Si
+EXEC GuardarMembresia Oro,1,30,30,Si
+EXEC BuscarInscripcionPorCelular 90909090

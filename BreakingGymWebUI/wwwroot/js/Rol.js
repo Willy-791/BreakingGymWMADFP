@@ -86,3 +86,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const nombreInput = document.getElementById('NombreRol');
+
+    nombreInput.addEventListener('input', function () {
+
+        const original = this.value;
+
+        const nuevo = this.value.replace(/\d/g, '');
+
+        if (nuevo !== original) {
+            this.value = nuevo;
+
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'No se permiten números en este campo.',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    });
+});

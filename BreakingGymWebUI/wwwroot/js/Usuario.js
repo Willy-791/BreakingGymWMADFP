@@ -89,3 +89,72 @@
         });
     }
 });
+// Numero
+document.addEventListener("DOMContentLoaded", function () {
+    const nombreInput = document.getElementById('NombreUsuario');
+
+    nombreInput.addEventListener('input', function () {
+
+        const original = this.value;
+
+        const nuevo = this.value.replace(/\d/g, '');
+
+        if (nuevo !== original) {
+            this.value = nuevo;
+
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'No se permiten números en este campo.',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    });
+});
+// Letra
+document.addEventListener("DOMContentLoaded", function () {
+    const edadInput = document.getElementById('Cel'); 
+
+    edadInput.addEventListener('input', function () {
+       
+        const original = this.value;
+       
+        const nuevo = this.value.replace(/\D/g, ''); 
+
+        if (nuevo !== original) {
+            this.value = nuevo;
+
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'Sólo se permiten números en este campo.',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    });
+});
+// Numero
+document.addEventListener("DOMContentLoaded", function () {
+    const nombreInput = document.getElementById('ApellidoUsuario');
+
+    nombreInput.addEventListener('input', function () {
+
+        const original = this.value;
+
+        const nuevo = this.value.replace(/\d/g, '');
+
+        if (nuevo !== original) {
+            this.value = nuevo;
+
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'No se permiten números en este campo.',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    });
+});

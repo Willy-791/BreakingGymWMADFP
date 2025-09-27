@@ -97,3 +97,49 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+//mumero
+document.addEventListener("DOMContentLoaded", function () {
+    const nombreInput = document.getElementById('NombreMembresia');
+
+    nombreInput.addEventListener('input', function () {
+
+        const original = this.value;
+
+        const nuevo = this.value.replace(/\d/g, '');
+
+        if (nuevo !== original) {
+            this.value = nuevo;
+
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'No se permiten números en este campo.',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    });
+});
+//Letra
+document.addEventListener("DOMContentLoaded", function () {
+    const edadInput = document.getElementById('PrecioMembresia');
+
+    edadInput.addEventListener('input', function () {
+
+        const original = this.value;
+
+        const nuevo = this.value.replace(/\D/g, '');
+
+        if (nuevo !== original) {
+            this.value = nuevo;
+
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Atención!',
+                text: 'Sólo se permiten números en este campo.',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    });
+});
