@@ -107,8 +107,7 @@ body {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.TC 
-{
+.TC {
     background-color: #ff03d6;
 }
 
@@ -3272,11 +3271,11 @@ textarea.form-control-lg {
 }
 
 .btn-success {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #198754;
+    --bs-btn-color: #000;
+    --bs-btn-bg: #18a8ae;
     --bs-btn-border-color: #198754;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #157347;
+    --bs-btn-hover-bg: #0a5256;
     --bs-btn-hover-border-color: #146c43;
     --bs-btn-focus-shadow-rgb: 60, 153, 110;
     --bs-btn-active-color: #fff;
@@ -8896,7 +8895,7 @@ textarea.form-control-lg {
 
 .text-white {
     --bs-text-opacity: 1;
-    color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+    color: black !important;
 }
 
 .text-body {
@@ -8942,7 +8941,7 @@ textarea.form-control-lg {
 
 .bg-primary {
     --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+    background-color: #03d6ff !important;
 }
 
 .bg-secondary {
@@ -12646,7 +12645,7 @@ body {
 }
 
     .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-        color: #fbe191; /*color de las diviciones del menu lateral*/
+        color: #ffffc4; /*color de las diviciones del menu lateral*/
     }
 
     .sb-sidenav-dark .sb-sidenav-menu .nav-link {
@@ -12678,7 +12677,7 @@ body {
             }
 
     .sb-sidenav-dark .sb-sidenav-footer {
-        background-color: #0a5256;
+        background-color: #18a8ae !important;
     }
 
 .sb-sidenav-light {
