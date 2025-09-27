@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/Ladmin.cshtml";
 }
 
-<h1>MostrarMembresia</h1>
 
 <div class="container mt-4">
     <div class="card shadow-lg">
@@ -13,6 +12,10 @@
             <a asp-action="GuardarMembresia" class="btn btn-success btn-sm"><i class="bi bi-person-plus-fill"></i> Agregar Membresía</a>
         </div>
         <div class="card-body">
+            <p class="des">
+                En esta sección puedes gestionar las membresías del gimnasio. <br /> Aquí se registran los diferentes tipos de membresías disponibles, permitiendo agregar, modificar y eliminar.
+            </p>
+            
             <table class="table table-hover table-bordered table-striped align-middle">
                 <thead class="TC tN">
                     <tr>
@@ -25,6 +28,7 @@
                         <th scope="col">Descripción</th>
                         <th scope="col">Acciones</th>
                     </tr>
+                    
                 </thead>
                 <tbody>
                     @if (Model != null && Model.Any())

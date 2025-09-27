@@ -110,10 +110,17 @@ body {
 .TC {
     background-color: #ff03d6;
 }
+.des {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    padding: 10px 20px; /* Espaciado interior */
+    border-radius: 8px;
+}
 
-.iconos{
+.iconos {
     padding: 2%;
-
 }
 
 hr {
