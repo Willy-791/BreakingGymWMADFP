@@ -12895,4 +12895,38 @@ body {
     font-size: 0.75rem;
     border-radius: 0.375rem !important;
 }
+/*Estilo, WhatsApp, Instagram, lenkedin*/
+.fa-brands {
+    margin: 15px;
+    border-radius: 50px;
+    transition: 0.3s ease;
+    font-size: 2rem;
+}
+/*Estilo de Gmail*/
+.fa-solid {
+    margin: 15px;
+    border-radius: 10%;
+    transition: 0.3s ease;
+    font-size: 2rem;
+}
+/*hover de whatsApp*/
+.fa-whatsapp:hover {
+    color: white;
+    box-shadow: 0 0 10px #25D366, 0 0 20px #25D366, 0 0 30px #25D366;
+    transform: scale(1.05);
+}
+/*hover de Gmail*/
+.fa-envelope:hover {
+    box-shadow: 0 0 10px #D14836, 0 0 20px #D14836, 0 0 30px #D14836;
+    transform: scale(1.05);
+}
+/*hover de instagram*/
+.fa-instagram:hover {
+    box-shadow: 0 0 20px #fd5949, 0 0 30px #d6249f, 0 0 40px #285AEB;
+    transform: scale(1.05);
+}
 
+.fa-linkedin:hover {
+    box-shadow: 0 0 20px #0000FF, 0 0 30px #0000FF, 0 0 40px #fff;
+    transform: scale(1.05);
+}

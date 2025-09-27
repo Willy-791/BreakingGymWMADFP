@@ -6,12 +6,12 @@
 <div class="row justify-content-center">
     <div class="col-md-5">
         <div class="card shadow-lg border-0 rounded-3">
-
-            <h2 class="text-white text-center">Iniciar Sesión</h2>
-
+           
+                <h2 class="text-white text-center">Iniciar Sesión</h2>
+            
             <div class="card-body">
                 <form asp-action="Login" method="post">
-
+                    
                     <div class="mb-3">
                         <label for="cuenta" class="form-label">Cuenta</label>
                         <input type="text" name="cuenta" class="form-control" placeholder="Ingrese su usuario" required />
@@ -34,267 +34,255 @@
                 </form>
             </div>
             <div class="footer text-center">
-                BreakingGym Web © @DateTime.Now.Year
-            </div>
-        </div>
+               BreakingGym Web © @DateTime.Now.Year
+           </div>
     </div>
+</div>
 
 
-    <style>
-        body {
-            background: url('/FT_DeSobreNosotros/gym-equipment.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-        }
+<style>
+body {
+    background: url('/FT_DeSobreNosotros/gym-equipment.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
 
-        /* HEADER CON ANIMACIÓN */
-        .card-header {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            padding: 20px 15px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            /* Animación de entrada */
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: slideInFromTop 0.8s ease-out 0.3s forwards;
-        }
+/* HEADER CON ANIMACIÓN */
+.card-header {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    
+    /* Animación  */
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: slideInFromTop 0.8s ease-out 0.3s forwards;
+}
 
-            .card-header h4 {
-                margin: 0;
-                font-weight: bold;
-                color: #fff;
-            }
+.card-header h2 {
+    margin: 0;
+    font-weight: bold;
+    color: #FFFFFF;
+}
 
-        /* LABELS CON ANIMACIÓN */
-        .form-label {
-            font-weight: 600;
-            color: #f1f1f1;
-            /* Animación de entrada escalonada */
-            opacity: 0;
-            transform: translateX(-20px);
-            animation: slideInFromLeft 0.6s ease-out forwards;
-        }
-
-            /* Retrasos diferentes para cada label */
-            .form-label:nth-of-type(1) {
-                animation-delay: 0.5s;
-            }
-
-            .form-label:nth-of-type(2) {
-                animation-delay: 0.7s;
-            }
-
-            .form-label:nth-of-type(3) {
-                animation-delay: 0.9s;
-            }
-
-        /* INPUTS CON ANIMACIÓN */
-        .form-control {
-            border-radius: 10px;
-            padding: 12px 15px;
-            border: none;
-            outline: none;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            color: #000;
-            margin-bottom: 15px;
-            transition: box-shadow 0.3s ease;
-            /* Animación de entrada */
-            opacity: 0;
-            transform: translateX(20px);
-            animation: slideInFromRight 0.6s ease-out forwards;
-        }
-
-            /* Retrasos escalonados para inputs */
-            .form-control:nth-of-type(1) {
-                animation-delay: 0.6s;
-            }
-
-            .form-control:nth-of-type(2) {
-                animation-delay: 0.8s;
-            }
-
-            .form-control:nth-of-type(3) {
-                animation-delay: 1.0s;
-            }
-
-            .form-control:focus {
-                box-shadow: 0 0 10px rgba(0, 128, 255, 0.6);
-            }
-
-        /* BOTÓN CON ANIMACIÓN */
-        .btn-primary {
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1px;
-            padding: 12px 30px;
-            color: #ff4500;
-            border: 2px solid #ff4500;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            width: 100%;
-            text-decoration: none;
-            box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            /* Animación de entrada */
-            opacity: 0;
-            transform: translateY(30px) scale(0.9);
-            animation: buttonEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.1s forwards;
-        }
-
-            .btn-primary:hover {
-                background-color: #ff4500;
-                color: white;
-                transform: scale(1.05);
-                border: 2px solid #ff4500;
-                box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
-            }
-            
-
-        
+/* LABELS CON ANIMACIÓN */
+.form-label {
+    font-weight: 600;
+    color: #f1f1f1; 
+    
+    /* Animación de entrada escalonada */
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInFromLeft 0.6s ease-out forwards;
+}
 
 
+.form-label:nth-of-type(1) { animation-delay: 0.5s; }
+.form-label:nth-of-type(2) { animation-delay: 0.7s; }
+.form-label:nth-of-type(3) { animation-delay: 0.9s; }
 
-            .btn-primary:focus {
-                outline: none !important;
-                border: 2px solid #ff4500 !important;
-                box-shadow: 0 0 15px rgba(255, 69, 0, 0.9), 0 0 35px rgba(255, 69, 0, 0.7) !important;
-            }
+/* INPUTS CON ANIMACIÓN */
+.form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85); 
+    color: #000; 
+    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease;
+    
+    /* Animación de entrada */
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInFromRight 0.6s ease-out forwards;
+}
 
-            .btn-primary:active {
-                
-                background-color: #cc3700 !important;
-                color: white;
-                transform: scale(0.98);
-                border: 2px solid #ff4500 !important;
-                box-shadow: 0 0 20px rgba(255, 69, 0, 1), 0 0 40px rgba(255, 69, 0, 0.8) !important;
-                
-            }
 
-       
+.form-control:nth-of-type(1) { animation-delay: 0.6s; }
+.form-control:nth-of-type(2) { animation-delay: 0.8s; }
+.form-control:nth-of-type(3) { animation-delay: 1.0s; }
 
-        /* FOOTER CON ANIMACIÓN */
-        .footer {
-            background-color: rgba(128, 128, 128, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: white;
-            padding: 15px;
-            border-radius: 0 0 20px 20px;
-            text-align: center;
-            margin-top: 20px;
-            /* Animación de entrada */
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideInFromBottom 0.6s ease-out 1.3s forwards;
-        }
+.form-control:focus {
+    box-shadow: 0 0 10px rgba(0, 128, 255, 0.6);
+}
 
-        
-        .card {
-            background-color: rgba(0, 0, 0, 0.6) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 30px;
-            color: white;
-            margin-top: 20px;
-            border: 2px solid #ff4500 !important;
-            /* tonos naranja */
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.6), 0 0 45px rgba(255, 0, 0, 0.5) !important;
-            /* Solo agregamos animación de entrada */
-            opacity: 0;
-            transform: scale(0.9) translateY(30px);
-            animation: cardEntrance 1s ease-out 0.1s forwards;
-            margin-top: 30%;
-        }
+/* BOTÓN CON ANIMACIÓN */
+.btn-primary {
+    background: transparent; 
+display: flex;  
+justify-content: center; 
+align-items: center;
+gap: 1px;
+padding: 12px 30px;
+color: #FFD700; 
+border: 2px solid #FFD700; 
+border-radius: 10px;
+font-weight: 600;   
+font-size: 1.1rem;  
+width: 100%;
+text-decoration: none;
+box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); 
+position: relative;
+overflow: hidden;
+z-index: 1;
+transition: background-color 0.3s ease, 
+            color 0.3s ease,
+            transform 0.2s ease, 
+            box-shadow 0.3s ease;
+    
+    /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    animation: buttonEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.1s forwards;
+}
 
-        
-        @@keyframes cardEntrance {
-            0% {
-                opacity: 0;
-                transform: scale(0.9) translateY(30px);
-            }
+.btn-primary:hover {
+     background-color: #FFD700; 
+    color: white; 
+    transform: scale(1.05); 
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); 
+}
 
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
+.btn-primary:focus {
+    outline: none !important; 
+    border: 2px solid #ff4500 !important; 
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 
+                0 0 35px rgba(255, 215, 0, 0.6) !important; 
+}
 
-        
-        @@keyframes slideInFromTop {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
+.btn-primary:active {
+    background-color: #FFD700 !important; 
+    color: white;
+    transform: scale(0.98); 
+    border: 2px solid #FFD700 !important; 
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.1) 
+                0 0 40px rgba(255, 215, 0, 0.6) !important; 
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* FOOTER CON ANIMACIÓN */
+.footer {
+    background-color: rgba(128, 128, 128, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    padding: 15px;
+    border-radius: 0 0 20px 20px; 
+    text-align: center;
+    margin-top: 20px;
+    
+    /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInFromBottom 0.6s ease-out 1.3s forwards;
+}
 
-        @@keyframes slideInFromLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
+/* CARD  */
+.card {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 30px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    border: 2px solid #FFD700 !important;
+  
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.8),
+        0 0 30px rgba(255, 215, 0, 0.6),
+        0 0 45px rgba(255, 215, 0, 0.5) !important;
+    
+    /*  animación  */
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+    animation: cardEntrance 1s ease-out 0.1s forwards;
+}
 
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
+/* ANIMACIONES  */
+@@keyframes cardEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+    }
 
-        @@keyframes slideInFromRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
 
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
 
-        @@keyframes slideInFromBottom {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+@@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-      
-        @@keyframes buttonEntrance {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) scale(0.9);
-            }
+@@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
 
-            50% {
-                opacity: 0.7;
-                transform: translateY(-5px) scale(1.05);
-            }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+@@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
 
-    </style>
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@@keyframes buttonEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translateY(-5px) scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+</style>
