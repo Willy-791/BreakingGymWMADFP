@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formGuardar.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const nombre = document.getElementById("Nombre").value.trim();
+            const nombre = document.getElementById("NombreRol").value.trim();
 
             if (!nombre) {
                 Swal.fire({
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     formModificar.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const nombre = document.getElementById("Nombre").value.trim();
+        const nombre = document.getElementById("NombreRol").value.trim();
 
 
         if (!nombre) {

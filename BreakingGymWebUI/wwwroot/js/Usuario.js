@@ -5,9 +5,9 @@
         formGuardar.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const nombre = document.getElementById("Nombre").value.trim();
-            const apellido = document.getElementById("Apellido").value.trim();
-            const celular = document.getElementById("Celular").value.trim();
+            const nombre = document.getElementById("NombreUsuario").value.trim();
+            const apellido = document.getElementById("ApellidoUsuario").value.trim();
+            const celular = document.getElementById("Cel").value.trim();
             const cuenta = document.getElementById("Cuenta").value.trim();
             const contraseña = document.getElementById("Contrasenia").value.trim();
 
@@ -40,11 +40,11 @@
         formModificar.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const nombre = document.getElementById("Nombre").value.trim();
-            const apellido = document.getElementById("Apellido").value.trim();
-            const celular = document.getElementById("Celular").value.trim();
+            const nombre = document.getElementById("NombreUsuario").value.trim();
+            const apellido = document.getElementById("ApellidoUsuario").value.trim();
+            const celular = document.getElementById("Cel").value.trim();
             const cuenta = document.getElementById("Cuenta").value.trim();
-            const contraseña = document.getElementById("Contraseña").value.trim();
+            const contraseña = document.getElementById("Contrasenia").value.trim();
 
             if (!nombre || !apellido || !celular || !cuenta || !contraseña) {
                 Swal.fire({

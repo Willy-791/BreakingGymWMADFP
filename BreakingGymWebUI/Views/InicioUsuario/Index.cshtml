@@ -4,5 +4,52 @@
     Layout = "~/Views/Shared/Lusuario.cshtml";
 }
 
-<h1>Bienvenido Usuario</h1>
+<section class="home" id="home">
+    <div class="home-content">
+        <h1>Bienvenido Usuario, a Breaking GYM</h1>
 
+    </div>
+</section>
+<style>
+    body {
+        margin: 0;
+        background-color: lightgrey;
+    }
+
+    .home {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 0;
+        text-align: center;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+
+    .home-content h1 {
+        position: relative;
+        z-index: 2;
+        font-size: 4rem;
+        font-family: 'Lobster', cursive;
+        font-weight: 700;
+        margin: 0;
+        color: #FFD700;
+        text-shadow: 0 0 15px rgba(0,0,0,0.8);
+        animation: zoomIn 1.5s ease forwards;
+    }
+
+    @@keyframes zoomIn {
+        0% {
+            transform: scale(0.7);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>

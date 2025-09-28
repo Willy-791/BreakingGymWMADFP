@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
         formGuardar.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const nombre = document.getElementById("Nombre").value.trim();
+            const nombre = document.getElementById("NombreMembresia").value.trim();
             const idServicio = document.getElementById("IdServicio").value.trim();
-            const precio = document.getElementById("Precio").value.trim();
+            const precio = document.getElementById("PrecioMembresia").value.trim();
             const duracion = document.getElementById("Duracion").value.trim();
             const descripcion = document.getElementById("Descripcion").value.trim();
             
@@ -68,9 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
     formModificar.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const nombre = document.getElementById("Nombre").value.trim();
+        const nombre = document.getElementById("NombreMembresia").value.trim();
         const idServicio = document.getElementById("IdServicio").value.trim();
-        const precio = document.getElementById("Precio").value.trim();
+        const precio = document.getElementById("PrecioMembresia").value.trim();
         const duracion = document.getElementById("Duracion").value.trim();
         const descripcion = document.getElementById("Descripcion").value.trim();
 

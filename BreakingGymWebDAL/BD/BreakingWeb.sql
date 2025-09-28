@@ -555,6 +555,13 @@ EXEC GuardarEstado 'Activo';
 EXEC GuardarEstado 'Inactivo';
 EXEC GuardarEstado 'Pendiente';
 GO
-EXEC GuardarServicio Baño, Baños
 EXEC GuardarMembresia Oro,1,30,30,Si
 EXEC BuscarInscripcionPorCelular 90909090
+GO
+EXEC GuardarServicio 'Baños','Sevicio de baños Sanitarios'
+EXEC GuardarServicio 'Entrenamiento Personalizado', 'Sesiones individuales con un entrenador certificado.'
+EXEC GuardarServicio 'Clases de Yoga', 'Mejora la flexibilidad, fuerza y relajación con instructores expertos.'
+EXEC GuardarServicio 'Cardio', 'Uso de caminadoras, bicicletas estáticas, elípticas y escaleras.'
+EXEC GuardarServicio 'Clases de Pilates', 'Ejercicios de bajo impacto para mejorar postura, fuerza y flexibilidad.'
+EXEC GuardarServicio 'Clases de HIIT', 'Entrenamiento de intervalos de alta intensidad para quemar calorías.'
+EXEC GuardarServicio 'Clases de Body Pump', 'Entrenamiento con pesas y música para tonificar todo el cuerpo.'

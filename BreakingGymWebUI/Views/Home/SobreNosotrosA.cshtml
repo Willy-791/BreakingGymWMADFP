@@ -1,16 +1,15 @@
-﻿
-@{
-    ViewData["Title"] = "SobreNosotrosA";
+﻿@{
+    ViewData["Title"] = "SobreNosotros";
     Layout = "~/Views/Shared/Ladmin.cshtml";
 }
 
 
 <!-- INICIO DEL ÁLBUM -->
 <section class="py-5 text-center container">
-    <div class="fila">
-        <div class="columna">
-            <h1 class="titulo">Bienvenido a Breaking GYM</h1>
-            <p class="texto">
+    <div class="fila1">
+        <div class="columna1">
+            <h1 class="titulo1">Bienvenido a Breaking GYM</h1>
+            <h4 class="texto1">
                 En Breaking GYM creemos que entrenar no es solo cuestión de fuerza, es un estilo de vida.
                 Nuestro objetivo es brindarte un ambiente moderno, seguro y motivador,
                 donde cada persona pueda alcanzar su mejor versión.
@@ -26,48 +25,48 @@
                 <br><br>
                 ¡Vive la experiencia Breaking GYM,
                 donde cada esfuerzo cuenta y cada meta se convierte en un logro!
-            </p>
+            </h4>
 
         </div>
     </div>
 </section>
 
-<div class="album">
-    <div class="container">
-        <div class="row">
+<div class="album1">
+    <div class="container1">
+        <div class="row1">
 
             <!-- Tarjeta 1 -->
-            <div class="col">
+            <div class="col1">
                 <div class="card1">
                     <img src="~/FT_DeSobreNosotros/1_Cb.jpg" class="card-img-top" alt="Imagen 1" />
-                    <div class="card-body">
-                        <p class="card-text">
+                    <div class="card-body1">
+                        <h5 class="card-text1">
                             Entrenamiento de fuerza y definición: alcanza tu máximo potencial físico con rutinas intensas y enfocadas en resultados.
-                        </p>
+                        </h5>
                     </div>
                 </div>
             </div>
 
             <!-- Tarjeta 2 -->
-            <div class="col">
+            <div class="col1">
                 <div class="card1">
                     <img src="~/FT_DeSobreNosotros/2_Ar.jpg" class="card-img-top" alt="Imagen 2" />
-                    <div class="card-body">
-                        <p class="card-text">
+                    <div class="card-body1">
+                        <h5 class="card-text1">
                             La disciplina y la constancia son la clave: transforma tu cuerpo paso a paso con dedicación y esfuerzo diario.
-                        </p>
+                        </h5>
                     </div>
                 </div>
             </div>
 
             <!-- Tarjeta 3 -->
-            <div class="col">
+            <div class="col1">
                 <div class="card1">
                     <img src="~/FT_DeSobreNosotros/3_Ad.jpg" class="card-img-top" alt="Imagen 3" />
-                    <div class="card-body">
-                        <p class="card-text">
+                    <div class="card-body1">
+                        <h5 class="card-text1">
                             Un estilo de vida saludable y moderno: combina fuerza, estética y confianza en cada entrenamiento.
-                        </p>
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -77,4 +76,268 @@
 </div>
 
 
+<div class="contenedor">
+    <h2 class="title">¡Breaking Gym, rompe tus límites!</h2>
+</div>
 
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <img src="~/FT_DeSobreNosotros/mujer-fitness.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Entrena hoy</h5>
+                <p>Transforma tu cuerpo y supera tus límites.</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="~/FT_DeSobreNosotros/dama-musica.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>¡Saca lo mejor de ti!</h5>
+                <p>Cambia tu cuerpo, cambia tu vida.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/FT_DeSobreNosotros/pose.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>No hay excusas</h5>
+                <p>El dolor es temporal, el orgullo para siempre.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+
+<style>
+    body {
+    }
+
+    /* Contenedor tipo "row" */
+    .fila1 {
+        display: flex;
+        justify-content: center; /* centra el contenido horizontalmente */
+        padding: 60px 0; /* igual que py-lg-5 */
+        background-color: rgba(0,0,0,0.1);
+        border: 2px solid #ffc107;
+        border-radius: 30px;
+    }
+
+
+    /* Contenedor tipo "col-lg-6 col-md-8 mx-auto" */
+    .columna {
+        width: 100%;
+        max-width: 600px; /* similar a ocupar 6/12 en pantallas grandes */
+        text-align: center;
+    }
+
+    /* fw-light */
+    .titulo {
+        font-weight: 300;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    /* lead + text-muted */
+    .texto {
+        font-size: 1.1rem;
+        color: #6c757d;
+        line-height: 1.6;
+    }
+
+    /* Estilo del álbum */
+    .album {
+        background-color: #f8f9fa; /* Fondo claro */
+        padding: 3rem 0;
+    }
+
+    /* Contenedor central */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        animation: titleEntry 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @@keyframes titleEntry {
+        0% {
+            transform: translateY(-100px) scale(0.5); /* Viene desde arriba, pequeño */
+            opacity: 0; /* Transparente */
+        }
+
+        100% {
+            transform: translateY(0) scale(1); /* Posición normal, tamaño normal */
+            opacity: 1; /* Completamente visible */
+        }
+    }
+
+    .container1 {
+        animation: titleEntry 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @@keyframes titleEntry {
+        0% {
+            transform: translateY(-100px) scale(0.5); /* Viene desde arriba, pequeño */
+            opacity: 0; /* Transparente */
+        }
+
+        100% {
+            transform: translateY(0) scale(1); /* Posición normal, tamaño normal */
+            opacity: 1; /* Completamente visible */
+        }
+    }
+
+
+
+    /* Fila de tarjetas */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem; /* Espaciado entre tarjetas */
+    }
+
+    /* Cada columna / tarjeta */
+    .col {
+        flex: 1 0 30%; /* Tres tarjetas por fila aprox */
+    }
+
+    /* Tarjeta */
+    .card1 {
+        background-color: #fff;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+        .card1:hover {
+            transform: scale(1.05);
+            border-radius: 2px solid #00ffff;
+        }
+
+    /* Imagen de la tarjeta: todas iguales */
+    .card-img-top {
+        width: 100%;
+        height: 500px; /* altura fija para todas las imágenes */
+        object-fit: cover; /* recorta sin deformar */
+        display: block;
+    }
+
+    /* Cuerpo de la tarjeta */
+    .card-body {
+        padding: 1rem;
+    }
+
+    /* Texto dentro de la tarjeta */
+    .card-text {
+        margin: 0;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    /* Responsivo */
+    @@media (max-width: 768px) {
+        .col {
+            flex: 1 0 48%; /* Dos tarjetas por fila en tablet */
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .col {
+            flex: 1 0 100%; /* Una tarjeta por fila en móvil */
+        }
+    }
+
+    .contenedor {
+        padding: 50px;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 35px;
+        color: purple;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        margin: 0;
+        transition: transform 1s ease;
+    }
+
+        .title:hover {
+            color: #ff03d6;
+            transform: scale(1.2);
+        }
+
+    .carousel {
+        max-width: 900px;
+        margin: 40px auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px #f3aacb;
+        animation: titleEntry 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @@keyframes titleEntry {
+        0% {
+            transform: translateY(-100px) scale(0.5);
+            opacity: 0; /* Transparente */
+        }
+
+        100% {
+            transform: translateY(0) scale(1);
+            opacity: 1; /* visible */
+        }
+    }
+
+    .carousel-item img {
+        border-radius: 15px;
+        object-fit: cover;
+        height: 500px; /* Altura */
+        width: 100%;
+    }
+
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 10px 20px;
+        color: #fff;
+        bottom: 20px;
+    }
+
+        .carousel-caption h5 {
+            font-size: 20px;
+            font-weight: bold;
+            color: yellow;
+        }
+
+        .carousel-caption p {
+            font-size: 14px;
+            margin-top: 6px;
+            color: #FFFF;
+        }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        background-color: #000;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+</style>
