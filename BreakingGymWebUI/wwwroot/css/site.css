@@ -12903,11 +12903,11 @@ body {
     font-size: 2rem;
 }
 /*Estilo de Gmail*/
-.fa-solid {
-    margin: 15px;
-    border-radius: 10%;
-    transition: 0.3s ease;
-    font-size: 2rem;
+.iconG {
+margin: 15px;
+border-radius: 10%;
+transition: 0.3s ease;
+font-size: 2rem;
 }
 /*hover de whatsApp*/
 .fa-whatsapp:hover {
