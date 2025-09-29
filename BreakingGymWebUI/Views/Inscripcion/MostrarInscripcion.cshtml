@@ -34,6 +34,7 @@
                         <th scope="col">Fecha Inscripción</th>
                         <th scope="col">Fecha Vencimiento</th>
                         <th scope="col">Acciones</th>
+                        <th scope="col">Activacion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +59,24 @@
                                     <a asp-action="EliminarInscripcion" asp-route-id="@inscripcion.Id" class="btn btn-danger btn-sm">
                                         <i class="bi bi-trash-fill"></i> Eliminar
                                     </a>
+                                    
+                                    
+
                                 </td>
+                                <td class="text-center">
+                                    <form asp-action="CambiarEstadoInscripcion" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="@inscripcion.Id" />
+                                        @{
+                                            string botonClase = (inscripcion.IdEstado == 1) ? "btn-secondary" : "btn-success";
+                                            string icono = (inscripcion.IdEstado == 1) ? "bi-x-circle" : "bi-check-circle";
+                                            string textoBoton = (inscripcion.IdEstado == 1) ? "Desactivar" : "Activar";
+                                        }
+                                        <button type="submit" class="btn btn-sm @botonClase">
+                                            <i class="bi @icono"></i> @textoBoton
+                                        </button>
+                                    </form>
+
+                                    </td>
                             </tr>
                         }
                     }
@@ -122,5 +140,16 @@
                         });
                     </text>
         }
+            @if (TempData["ExitoCambioEstado"] != null)
+    {
+            <text>
+                Swal.fire({
+                    icon: "success",
+                    title: "Éxito",
+                    text: "@Html.Raw(TempData["ExitoCambioEstado"])"
+                });
+            </text>
+    }
+
     });
 </script>
