@@ -2,10 +2,11 @@
 
 @{
     ViewData["Title"] = "Planes de Membresía";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container my-5">
-    <h2 class="text-center mb-4">Elige tu plan</h2>
+    <h2 class="colorV text-center mb-4">Elige tu plan</h2>
     <p class="text-center">Actualice a funciones premium para mejorar su productividad y optimizar su flujo de trabajo. ¡Seleccione el plan que mejor se adapte a sus necesidades!</p>
 
     <div class="row justify-content-center">
@@ -14,7 +15,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-header text-center bg-light">
-                        <h4 class="my-0">@plan.Nombre</h4>
+                        <h4 class="colorA my-0">@plan.Nombre</h4>
                         <h5 class="my-2 text-primary">@("$" + plan.Precio) <small class="text-muted">/mes</small></h5>
                         <p class="text-muted">@plan.Duracion</p>
                     </div>
@@ -22,10 +23,10 @@
                         <ul class="list-unstyled mb-4">
                             @foreach (var beneficio in plan.Descripcion.Split(';'))
                             {
-                                <li>✔ @beneficio.Trim()</li>
+                                <li><i class="fa-solid fa-check " style="color:#ffc107"></i> @beneficio.Trim()</li>
                             }
                         </ul>
-                        <a href="@Url.Action("Login", "login", new { idMembresia = plan.Id })" class="btn btn-primary mt-auto">Elegir este plan</a>
+                        <a href="@Url.Action("Login", "login", new { idMembresia = plan.Id })" class="btnV btn1 mt-auto">Elegir este plan</a>
                     </div>
                 </div>
             </div>
