@@ -30,6 +30,7 @@
                 reverseButtons: true
             }).then(result => {
                 if (result.isConfirmed) formGuardar.submit();
+               
             });
         });
     }

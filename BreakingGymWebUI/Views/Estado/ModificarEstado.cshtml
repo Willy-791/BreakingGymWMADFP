@@ -39,3 +39,21 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/Estado.js"></script>
 }
+<style>
+    .card {
+        animation: titleEntry 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @@keyframes titleEntry {
+        0% {
+            transform: translateY(-100px) scale(0.5); /* Viene desde arriba, pequeño */
+            opacity: 0; /* Transparente */
+        }
+
+        100% {
+            transform: translateY(0) scale(1); /* Posición normal, tamaño normal */
+            opacity: 1; /* Completamente visible */
+        }
+    }
+
+</style>

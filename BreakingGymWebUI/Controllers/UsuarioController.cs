@@ -40,15 +40,18 @@ namespace BreakingGymWebUI.Controllers
                 var listaU = UsuarioBL.MostrarUsuario();
                 bool existeC = listaU.Any(u => u.Cuenta.ToLower().Trim() == pusuarioEN.Cuenta.ToLower().Trim());
 
-                if (existeC ) 
+                if (existeC)
                 {
                     TempData["ErrorDuplicado"] = "La cuenta ingresada ya esta siendo utilizada por  alguien mas.";
                     return RedirectToAction(nameof(GuardarUsuario));
                 }
                 UsuarioBL.GuardarUsuario(pusuarioEN);
                 TempData["ExitoGuardar"] = "Tu usuario sea registrado correctamente";
+                ModelState.Clear();
             }
-            return View("GuardarUsuario", pusuarioEN);
+            ModelState.Clear();
+            return View("GuardarUsuario");
+          
         }
 
         // GET: Usuarios/ModificarUsuario/5
