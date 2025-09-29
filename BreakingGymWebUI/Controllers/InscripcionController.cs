@@ -126,6 +126,28 @@ namespace BreakingGymWebUI.Controllers
             var lista = InscripcionBL.BuscarInscripcion(celular);
             return View("BuscarInscripcion", lista); // Vista multitabla
         }
+
+        [HttpPost]
+        public IActionResult CambiarEstadoInscripcion(int id)
+        {
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+                return RedirectToAction("Login", "Login");
+
+            var inscripcion = InscripcionBL.MostrarInscripcion().FirstOrDefault(e => e.Id == id);
+            if (inscripcion == null) return NotFound();
+
+            // Alternar estado
+            if (inscripcion.IdEstado == 1)
+                inscripcion.IdEstado = 2; // Cambiar a inactivo
+            else
+                inscripcion.IdEstado = 1; // Cambiar a activo
+
+            InscripcionBL.ModificarInscripcion(inscripcion);
+
+            TempData["ExitoCambioEstado"] = "El estado de la inscripción fue cambiado correctamente.";
+            return RedirectToAction(nameof(MostrarInscripcion));
+        }
+
     }
 }
 
