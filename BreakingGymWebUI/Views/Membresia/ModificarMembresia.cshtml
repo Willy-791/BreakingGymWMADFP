@@ -20,29 +20,29 @@
                         
                         <div class="mb-3">
                             <label asp-for="Nombre" class="form-label fw-bold"></label>
-                            <input asp-for="Nombre" class="form-control" placeholder="Nombre de membresía" />
+                            <input asp-for="Nombre" id="NombreMembresia" class="form-control" placeholder="Nombre de membresía" />
                             <span asp-validation-for="Nombre" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label asp-for="IdServicio" class="form-label fw-bold">Servicio</label>
-                          <select asp-for="IdServicio" class="form-select" asp-items="ViewBag.Membresias">
+                            <select asp-for="IdServicio" id="IdServicio" class="form-select" asp-items="ViewBag.Membresias">
                                 <option value="">-- Seleccione un servicio --</option>
                                 </select>
                            
                         </div>
                         <div class="mb-">
                             <label asp-for="Precio" class="form-label fw-bold"></label>
-                            <input asp-for="Precio" class="form-control" placeholder="Precio de membresía" />
+                            <input asp-for="Precio" id="PrecioMembresia" class="form-control" placeholder="Precio de membresía" />
                             <span asp-validation-for="Precio" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label asp-for="Duracion" class="form-label fw-bold"></label>
-                            <input asp-for="Duracion" class="form-control" placeholder="Duración de membresía" />
+                            <input asp-for="Duracion" id="Duracion" class="form-control" placeholder="Duración de membresía" />
                             <span asp-validation-for="Duracion" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label asp-for="Descripcion" class="form-label fw-bold"></label>
-                            <input asp-for="Descripcion" class="form-control" placeholder="Descripción de la membresía" />
+                            <input asp-for="Descripcion" id="Descripcion" class="form-control" placeholder="Descripción de la membresía" />
                             <span asp-validation-for="Descripcion" class="text-danger"></span>
                         </div>
                         <div class="d-flex justify-content-between">

@@ -101,7 +101,7 @@
     color: #ffc107;
 }
 .colorw{
-    color: white;
+    color: white !important;
 }
 .btnV {
     --bs-btn-color: #000;
@@ -165,7 +165,10 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .TC {
-    background-color: #ff03d6;
+    background-color: #138187;
+}
+.tN {
+    color: white !important;
 }
 .des {
     text-align: center;
@@ -2082,9 +2085,7 @@ progress {
     vertical-align: top;
     border-color: var(--bs-table-border-color);
 }
-.tN{
-    color: white !important;
- }
+
 
     .table > :not(caption) > * > *, .datatable-table > :not(caption) > * > * {
         padding: 0.5rem 0.5rem;
@@ -9039,7 +9040,7 @@ textarea.form-control-lg {
 }
 
 .bg-dark {
-    background-color: #18a8ae !important;
+    background-color: #138187 !important;
 }
 
 
@@ -12741,7 +12742,7 @@ body {
             }
 
     .sb-sidenav-dark .sb-sidenav-footer {
-        background-color: #18a8ae !important;
+        background-color: #138187 !important;
     }
 
 .sb-sidenav-light {
@@ -12781,7 +12782,7 @@ body {
             }
 
     .sb-sidenav-light .sb-sidenav-footer {
-        background-color: #e9ecef;
+        background-color: #138187;
     }
 
 .datatable-wrapper .datatable-container {
