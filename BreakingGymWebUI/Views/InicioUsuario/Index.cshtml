@@ -6,14 +6,15 @@
 
 <section class="home" id="home">
     <div class="home-content">
-        <h1>Bienvenido Usuario, a Breaking GYM</h1>
+        <h1>Bienvenido a Breaking GYM</h1>
 
     </div>
 </section>
 <style>
     body {
         margin: 0;
-        background-color: lightgrey;
+        background-color: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4)), 
+                url('/FT_DeSobreNosotros/hombre-gym.jpg') no-repeat center center fixed;;
     }
 
     .home {
@@ -27,17 +28,33 @@
         flex-direction: column;
         overflow: hidden;
     }
-
+    .home-content {
+        position: absolute;           
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    background: linear-gradient(
+        45deg,                    
+        transparent 30%,           
+        rgba(255, 107, 53, 0.1) 50%,  
+        transparent 70%            
+    );
+    animation: overlayShift 8s ease-in-out infinite;  /* Animación  */
+    z-index: -1;                  
+    }
 
     .home-content h1 {
-        position: relative;
-        z-index: 2;
-        font-size: 4rem;
-        font-family: 'Lobster', cursive;
-        font-weight: 700;
-        margin: 0;
-        color: #FFD700;
-        text-shadow: 0 0 15px rgba(0,0,0,0.8);
+        font-size: clamp(2.5rem, 8vw, 5rem);  
+    font-weight: 900;              
+    color: var(--text-light);      
+    margin-bottom: 20px;          
+    font-family: 'Orbitron', monospace;  
+    letter-spacing: 4px;           
+    text-transform: uppercase;     
+   
+    line-height: 1.1;             
         animation: zoomIn 1.5s ease forwards;
     }
 
