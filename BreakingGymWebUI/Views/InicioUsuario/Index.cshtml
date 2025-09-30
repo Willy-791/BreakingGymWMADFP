@@ -6,16 +6,22 @@
 
 <section class="home" id="home">
     <div class="home-content">
-        <h1>Bienvenido a Breaking GYM</h1>
-
+        <h1>
+            <span class="word">Bienvenido a</span>
+            <span class="highlight">Breaking GYM</span>
+        </h1>
     </div>
 </section>
+
 <style>
+    /* Google Fonts */
+    @@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+
     body {
         margin: 0;
-        background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4)), 
-                url('/FT_DeSobreNosotros/hombre-gym.jpg') no-repeat center center fixed;
+        background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4)), url('/FT_DeSobreNosotros/hombre-gym.jpg') no-repeat center center fixed;
         background-size: cover;
+       
     }
 
     .home {
@@ -24,52 +30,99 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        padding: 0;
         text-align: center;
         flex-direction: column;
         overflow: hidden;
     }
-    .home-content {
-        position: absolute;           
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  
-    background: linear-gradient(
-        45deg,                    
-        transparent 30%,           
-        rgba(255, 107, 53, 0.1) 50%,  
-        transparent 70%            
-    );
-    animation: overlayShift 8s ease-in-out infinite;  /* Animación  */
-    z-index: -1;                  
-    }
 
     .home-content h1 {
-        font-size: clamp(2.5rem, 8vw, 5rem);  
-    font-weight: 900;              
-    color: var(--text-light);      
-    margin-bottom: 20px;          
-    font-family: 'Orbitron', monospace;  
-    letter-spacing: 4px;           
-    text-transform: uppercase; 
-     justify-content: center;
-        align-items: center;
-   
-    line-height: 1.1;             
-        animation: zoomIn 1.5s ease forwards;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 900;
+        color: #fff;
+      
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        line-height: 1.2;
+        animation: zoomIn 1.5s ease forwards, glowPulse 3s infinite alternate;
     }
 
-    @@keyframes zoomIn {
-        0% {
-            transform: scale(0.7);
-            opacity: 0;
-        }
+    .word {
+        display: block;
+        font-size: 1em;
+        opacity: 0;
+        font-family: 'Orbitron', sans-serif;
+        animation: fadeInUp 1.5s ease forwards;
+    }
 
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
+    .highlight {
+        display: block;
+        font-size: 1.2em;
+        font-family: 'Orbitron', sans-serif;
+        background: linear-gradient(45deg, #ff6b35, #f7931e, #00d4ff);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: fadeInUp 2.5s ease forwards 0.5s, gradientShift 4s ease infinite;
+    }
+
+    /* Animaciones */
+    @@keyframes zoomIn {
+        0%
+
+    {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    }
+
+    @@keyframes fadeInUp {
+        from
+
+    {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    }
+
+    @@keyframes gradientShift {
+        0%
+
+    {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+    }
+
+    @@keyframes glowPulse {
+        from
+
+    {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 107, 53, 0.6);
+    }
+
+    to {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 107, 53, 0.9), 0 0 60px rgba(0, 212, 255, 0.8);
+    }
+
     }
 </style>
